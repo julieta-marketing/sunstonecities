@@ -1,0 +1,528 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-dark: var(--surface-dark);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-ember: var(--ember);
+  --color-mint: var(--mint);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  color-scheme: light;
+  --radius: 1rem;
+
+  --background: #f6f7fd;
+  --foreground: #333b52;
+
+  --muted: #eef1fb;
+  --muted-foreground: #626b89;
+
+  --surface: #ffffff;
+  --surface-2: #f6f7fd;
+  /* Shared dark navy surface for adjoining dark sections (e.g. Events + USC Sunstone Challenge) */
+  --surface-dark: #0f3a63;
+
+  --card: #ffffff;
+  --card-foreground: #333b52;
+
+  --popover: #ffffff;
+  --popover-foreground: #333b52;
+
+  /* Indigo-blue brand */
+  --primary: #2f5fd4;
+  --primary-foreground: #ffffff;
+  --primary-light: #467ff7;
+  --primary-dark: #244fb8;
+
+  /* Small accent pops only */
+  --ember: #ff9457;
+  --mint: #3dcbb1;
+
+  --secondary: #eef1fb;
+  --secondary-foreground: #333b52;
+
+  --accent: #4e72d9;
+  --accent-foreground: #ffffff;
+
+  --border: #e6eaf9;
+  --input: #e6eaf9;
+  --ring: #4e72d9;
+
+  --destructive: oklch(0.62 0.22 25);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  [tabindex]:not([tabindex='-1']):focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--ring) 78%, white);
+    outline-offset: 3px;
+  }
+  [id]:target {
+    scroll-margin-top: 6rem;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  /* Glass surfaces */
+  .glass {
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  /* Brand text gradient */
+  .text-gradient {
+    background: linear-gradient(
+      100deg,
+      var(--foreground) 0%,
+      var(--foreground) 40%,
+      var(--primary) 75%,
+      var(--primary-dark) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-sunstone {
+    background: linear-gradient(100deg, var(--primary) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fine hairline grid overlay */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 64px 64px;
+  }
+
+  /* Dot field texture */
+  .bg-dots {
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--primary) 22%, transparent) 1.2px,
+      transparent 1.2px
+    );
+    background-size: 22px 22px;
+  }
+
+  /* Soft, restrained technology backdrop for the team section */
+  .team-tech-background {
+    background-color: #f7faff;
+    background-image:
+      radial-gradient(
+        circle at 14% 18%,
+        color-mix(in srgb, var(--primary) 11%, transparent) 0,
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 86% 76%,
+        color-mix(in srgb, #1d6eaf 9%, transparent) 0,
+        transparent 38%
+      ),
+      linear-gradient(135deg, #fbfdff 0%, #f2f7ff 48%, #f9fbff 100%);
+  }
+
+  /* Shared homepage chapter surfaces keep related sections visually continuous. */
+  .home-capabilities-background {
+    background-color: #f5f8fc;
+    background-image:
+      linear-gradient(
+        124deg,
+        transparent 0%,
+        transparent 34%,
+        color-mix(in srgb, var(--primary) 7%, transparent) 34%,
+        transparent 51%
+      ),
+      linear-gradient(180deg, #f9fbfe 0%, #f2f7fc 56%, #f6f9fd 100%);
+  }
+
+  .home-community-background {
+    background-color: #e7edf5;
+    background-image:
+      linear-gradient(
+        132deg,
+        color-mix(in srgb, white 42%, transparent) 0%,
+        transparent 38%,
+        color-mix(in srgb, #79b3de 10%, transparent) 100%
+      ),
+      linear-gradient(180deg, #e8eef6 0%, #e3ebf4 100%);
+  }
+
+  /* Diagonal hairlines */
+  .bg-diagonal {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      color-mix(in srgb, var(--foreground) 5%, transparent) 0,
+      color-mix(in srgb, var(--foreground) 5%, transparent) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+
+  /* Radial soft mask for patterns fading out */
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 78%);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+
+  /* Mouse-follow spotlight on cards */
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--primary) 16%, transparent),
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Shine sweep on hover */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    height: 100%;
+    width: 60%;
+    transform: skewX(-20deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, #ffffff 45%, transparent),
+      transparent
+    );
+    transition: left 0.7s ease;
+    pointer-events: none;
+  }
+  .shine:hover::after {
+    left: 150%;
+  }
+
+  /* Soft floating glow orb */
+  @keyframes floaty {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(0, -18px) scale(1.06);
+    }
+  }
+  .animate-floaty {
+    animation: floaty 14s ease-in-out infinite;
+  }
+
+  /* Subtle film grain */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Marquee */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+  }
+
+  /* Full-width past-events gallery */
+  @keyframes events-gallery-scroll-left {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  @keyframes events-gallery-scroll-right {
+    from {
+      transform: translate3d(-50%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .events-gallery-row {
+    contain: layout paint style;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 3%,
+      #000 97%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 3%,
+      #000 97%,
+      transparent
+    );
+  }
+  .events-gallery-track {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .events-gallery-card {
+    backface-visibility: hidden;
+    contain: layout paint style;
+    transform: translate3d(0, 0, 0);
+  }
+  .events-gallery-track--left {
+    animation: events-gallery-scroll-left 58s linear infinite;
+  }
+  .events-gallery-track--right {
+    animation: events-gallery-scroll-right 66s linear infinite;
+  }
+  .events-gallery-row:hover .events-gallery-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-delay: 0ms !important;
+      transition-duration: 0.001ms !important;
+    }
+    .animate-marquee,
+    .animate-floaty {
+      animation: none;
+    }
+    .events-gallery-row {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .events-gallery-row::-webkit-scrollbar {
+      display: none;
+    }
+    .events-gallery-track {
+      animation: none;
+      transform: none;
+    }
+    .events-gallery-track--right {
+      transform: none;
+    }
+    .events-gallery-group:first-child > * {
+      scroll-snap-align: start;
+    }
+    .events-gallery-group:last-child {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-height: 620px) {
+    .site-header {
+      padding-top: 0.5rem;
+    }
+
+    .site-header-bar {
+      border-radius: 0.95rem;
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
+    }
+
+    .site-header a[aria-label='Sunstone Cities home'] img {
+      height: 1.75rem;
+    }
+
+    .site-header nav a,
+    .site-header nav button {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+
+    .site-header-cta {
+      padding: 0.55rem 1rem;
+      font-size: 0.8125rem;
+    }
+
+    .hero-shell {
+      min-height: 100svh;
+    }
+
+    .hero-content {
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+    }
+
+    .hero-title {
+      max-width: 52rem;
+      font-size: clamp(3rem, 12.5vh, 4.25rem);
+      line-height: 1;
+    }
+
+    .hero-copy-row {
+      margin-top: 1.25rem;
+      gap: 1rem;
+    }
+
+    .hero-summary {
+      max-width: 27rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      gap: 0.75rem;
+    }
+
+    .hero-cta {
+      padding: 0.75rem 1.65rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-marquee {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-height: 500px) {
+    .hero-content {
+      padding-top: 4.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      max-width: 46rem;
+      font-size: clamp(2.65rem, 11.5vh, 3.45rem);
+    }
+
+    .hero-summary {
+      max-width: 25rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .hero-cta {
+      padding: 0.68rem 1.45rem;
+    }
+  }
+}
+
+html {
+  scroll-padding-top: 5rem;
+}

@@ -17,29 +17,24 @@ type NavEntry = NavLink | NavDropdown
 
 const navEntries: NavEntry[] = [
   { type: 'link', label: 'About', href: '/#about' },
+  { type: 'link', label: 'News', href: '/#news' },
   {
     type: 'dropdown',
     label: 'Services',
     items: [
-      { label: 'Project Consulting', href: '/services/project-consulting' },
+      { label: 'Project Consulting Services', href: '/services/project-consulting' },
       { label: 'Project Financing', href: '/services/project-financing' },
     ],
   },
   { type: 'link', label: 'Team', href: '/team' },
-  { type: 'link', label: 'News', href: '/news' },
   { type: 'link', label: 'Events', href: '/#events' },
   { type: 'link', label: 'Gallery', href: '/#events-full' },
 ]
 
-export function SiteHeader({
-  heroTone = 'light',
-}: {
-  heroTone?: 'light' | 'dark'
-}) {
+export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
-  const usesDarkHero = heroTone === 'dark' && !scrolled
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -65,18 +60,18 @@ export function SiteHeader({
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        className="site-header fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"
+        className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"
       >
         <div
           className={cn(
-            'site-header-bar flex w-full max-w-6xl items-center justify-between rounded-2xl border border-transparent px-4 py-2.5 transition-all duration-500 sm:px-5',
+            'flex w-full max-w-6xl items-center justify-between rounded-2xl border border-transparent px-4 py-2.5 transition-all duration-500 sm:px-5',
             scrolled
               ? 'glass border-border shadow-[0_10px_40px_-20px_rgba(49,80,158,0.35)]'
               : 'bg-transparent shadow-none',
           )}
         >
           <a href="/#top" className="shrink-0" aria-label="Sunstone Cities home">
-            <Logo variant={usesDarkHero ? 'dark' : 'default'} />
+            <Logo />
           </a>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -87,11 +82,7 @@ export function SiteHeader({
                   href={entry.href}
                   className={cn(
                     'group relative rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-foreground',
-                    scrolled
-                      ? 'text-muted-foreground'
-                      : usesDarkHero
-                        ? 'text-white/82 hover:text-white'
-                        : 'text-[#1c2d50]',
+                    scrolled ? 'text-muted-foreground' : 'text-[#1c2d50]',
                   )}
                 >
                   {entry.label}
@@ -103,11 +94,7 @@ export function SiteHeader({
                     openOnHover
                     className={cn(
                       'group relative inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-foreground data-[popup-open]:text-foreground',
-                      scrolled
-                        ? 'text-muted-foreground'
-                        : usesDarkHero
-                          ? 'text-white/82 hover:text-white data-[popup-open]:text-white'
-                          : 'text-[#1c2d50]',
+                      scrolled ? 'text-muted-foreground' : 'text-[#1c2d50]',
                     )}
                   >
                     {entry.label}
@@ -138,7 +125,7 @@ export function SiteHeader({
           <div className="flex items-center gap-2">
             <a
               href="/#contact"
-              className="site-header-cta group hidden items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-light md:inline-flex"
+              className="group hidden items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary-light md:inline-flex"
             >
               Contact Us
               <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -150,9 +137,7 @@ export function SiteHeader({
                 'inline-flex size-10 items-center justify-center rounded-full border md:hidden',
                 scrolled
                   ? 'border-border text-foreground'
-                  : usesDarkHero
-                    ? 'border-white/35 bg-transparent text-white'
-                    : 'border-[#1c2d50]/25 bg-transparent text-[#1c2d50]',
+                  : 'border-[#1c2d50]/25 bg-transparent text-[#1c2d50]',
               )}
               aria-label="Open menu"
             >
@@ -213,7 +198,6 @@ export function SiteHeader({
                         type="button"
                         onClick={() => setMobileServicesOpen((v) => !v)}
                         aria-expanded={mobileServicesOpen}
-                        aria-controls="mobile-services-menu"
                         className="flex w-full items-center justify-between py-5 font-display text-3xl font-medium text-foreground"
                       >
                         {entry.label}
@@ -227,7 +211,6 @@ export function SiteHeader({
                       <AnimatePresence initial={false}>
                         {mobileServicesOpen && (
                           <motion.div
-                            id="mobile-services-menu"
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}

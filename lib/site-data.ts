@@ -1,3 +1,5 @@
+import { newsIndex } from '@/lib/news-index'
+
 export interface NewsItem {
   id: string
   slug: string
@@ -16,8 +18,26 @@ export interface EventItem {
   location: string
   excerpt: string
   image: string
-  url?: string
-  ctaLabel?: string
+}
+
+export interface PastEvent {
+  image: string
+  tag: string
+  alt: string
+}
+
+export interface TeamMember {
+  id: string
+  name: string
+  title: string
+  photo: string
+  bio: string
+  linkedin: string
+  email: string
+  /** object-position anchor for the crop, e.g. '50% 18%'. Defaults to '50% 20%'. */
+  focus?: string
+  /** Extra zoom applied on top of object-cover to normalize face size. Defaults to 1. */
+  zoom?: number
 }
 
 export interface SubService {
@@ -170,7 +190,7 @@ export const marqueeItems: string[] = [
   'Community Growth',
 ]
 
-export const news: NewsItem[] = []
+export const news: NewsItem[] = newsIndex
 
 export const newsArchive: NewsItem[] = [
   {
@@ -216,7 +236,186 @@ export const events: EventItem[] = [
     excerpt:
       'A virtual information session for cities interested in participating in the fifth annual Sunstone Economic Development Challenge at USC Price.',
     image: '/event-usc-economic-development-challenge.jpg',
-    url: 'https://luma.com/opy2m4ti',
+  },
+]
+
+export const pastEvents: PastEvent[] = [
+  {
+    image: '/events-gallery/2025 CA Fwd Conference.jpg',
+    tag: '2025 CA Fwd Conference',
+    alt: '2025 CA Fwd Conference',
+  },
+  {
+    image: '/events-gallery/2025 CALED.png',
+    tag: '2025 CALED',
+    alt: '2025 CALED',
+  },
+  {
+    image: "/events-gallery/2025 Mayor's Fund for Long Beach.jpg",
+    tag: "2025 Mayor's Fund for Long Beach",
+    alt: "2025 Mayor's Fund for Long Beach",
+  },
+  {
+    image: '/events-gallery/2025 Resilient Cities Reception.png',
+    tag: '2025 Resilient Cities Reception',
+    alt: '2025 Resilient Cities Reception',
+  },
+  {
+    image: '/events-gallery/2026 Building Accelerators Panel.png',
+    tag: '2026 Building Accelerators Panel',
+    alt: '2026 Building Accelerators Panel',
+  },
+  {
+    image: '/events-gallery/2026 Industry Clusters Panel.png',
+    tag: '2026 Industry Clusters Panel',
+    alt: '2026 Industry Clusters Panel',
+  },
+  {
+    image: '/events-gallery/2026 MMASC Spring Forward Forum.png',
+    tag: '2026 MMASC Spring Forward Forum',
+    alt: '2026 MMASC Spring Forward Forum',
+  },
+  {
+    image: '/events-gallery/2026 Sunstone Economic Development Challenge.png',
+    tag: '2026 Sunstone Economic Development Challenge',
+    alt: '2026 Sunstone Economic Development Challenge',
+  },
+  {
+    image: '/events-gallery/2026 USC Price Student Team.png',
+    tag: '2026 USC Price Student Team',
+    alt: '2026 USC Price Student Team',
+  },
+  {
+    image: '/events-gallery/Aldo Cervantes, Community Development Director, City of Lakewood.png',
+    tag: 'Aldo Cervantes, Community Development Director, City of Lakewood',
+    alt: 'Aldo Cervantes, Community Development Director, City of Lakewood',
+  },
+  {
+    image: '/events-gallery/Andy Nakahata, Executive Director, IBank.png',
+    tag: 'Andy Nakahata, Executive Director, IBank',
+    alt: 'Andy Nakahata, Executive Director, IBank',
+  },
+  {
+    image: '/events-gallery/Brian Coleman, Project Financing Manager, GO-Biz.png',
+    tag: 'Brian Coleman, Project Financing Manager, GO-Biz',
+    alt: 'Brian Coleman, Project Financing Manager, GO-Biz',
+  },
+  {
+    image: '/events-gallery/Fiona Ma, California State Treasurer.png',
+    tag: 'Fiona Ma, California State Treasurer',
+    alt: 'Fiona Ma, California State Treasurer',
+  },
+  {
+    image: '/events-gallery/Glendale Tech Week with Mayor.png',
+    tag: 'Glendale Tech Week with Mayor',
+    alt: 'Glendale Tech Week with Mayor',
+  },
+  {
+    image: '/events-gallery/Gurbax Sahota, President & CEO, CALED.png',
+    tag: 'Gurbax Sahota, President & CEO, CALED',
+    alt: 'Gurbax Sahota, President & CEO, CALED',
+  },
+]
+
+export const team: TeamMember[] = [
+  {
+    id: 't1',
+    name: 'John Keisler',
+    title: 'Chief Executive Officer & Managing Member',
+    photo: '/team-headshots/John-Keisler-unified-gray.jpg',
+    focus: '50% 28%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/jpkeisler/',
+    email: 'John.Keisler@SunstoneCities.com',
+    bio: "John Keisler is an experienced economic development leader with two decades of public and private sector leadership, and now leads Sunstone Cities' mission to advance inclusive economic growth through strategic investment and public-private partnerships.",
+  },
+  {
+    id: 't2',
+    name: 'Jayro Sandoval',
+    title: 'Economic Development Manager & Managing Member',
+    photo: '/team-headshots/Jayro-Sandoval-unified-gray.jpg',
+    focus: '50% 24%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/jayrosandoval/',
+    email: 'Jayro.Sandoval@SunstoneCities.com',
+    bio: 'Jayro Sandoval brings deep experience leading public and nonprofit initiatives across Southern California focused on racial justice, arts equity, and economic inclusion.',
+  },
+  {
+    id: 't3',
+    name: 'Ryan Phong',
+    title: 'Project Manager & Managing Member',
+    photo: '/team-headshots/Ryan-Phong-unified-gray.jpg',
+    focus: '50% 26%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/ryanphong/',
+    email: 'Ryan.Phong@SunstoneCities.com',
+    bio: 'Ryan Phong manages consulting projects and public-sector partnerships that advance economic development and infrastructure financing, while also serving as program advisor for the annual USC Economic Development Challenge.',
+  },
+  {
+    id: 't4',
+    name: 'Jennifer Huang',
+    title: 'Director of Marketing, Communications & Community Engagement',
+    photo: '/team-headshots/Jennifer-Huang-unified-gray.jpg',
+    focus: '50% 24%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/jenniferehuang/',
+    email: 'Jennifer.Huang@SunstoneInvestment.com',
+    bio: 'Jennifer Huang leads Sunstone Cities\u2019 branding, messaging, and public-private community partnerships, bringing over a decade of experience that includes launching the Long Beach Accelerator and the inaugural Irvine Tech Day.',
+  },
+  {
+    id: 't5',
+    name: 'Harry Saltzgaver',
+    title: 'Managing Editor',
+    photo: '/team-headshots/Harry-Saltzgaver-unified-gray.jpg',
+    focus: '50% 21%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/harry-saltzgaver-442498268/',
+    email: 'Harry.Saltzgaver@SunstoneInvestment.com',
+    bio: 'Harry Saltzgaver is a veteran journalist with over 45 years of experience, who now crafts feature stories, public narratives, and op-eds for Sunstone Cities.',
+  },
+  {
+    id: 't6',
+    name: 'Julie Ta',
+    title: 'Marketing Associate',
+    photo: '/team-headshots/Julie-Ta-unified-gray.jpg',
+    focus: '50% 25%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/julieta02/',
+    email: 'Julie.Ta@SunstoneInvestment.com',
+    bio: 'Julie Ta is a versatile marketer skilled in social media, web design, and content creation, who elevates Sunstone Cities\u2019 presence by showcasing key projects and initiatives.',
+  },
+  {
+    id: 't7',
+    name: 'Giselle Melendez-Cruz',
+    title: 'Research & Management Analyst',
+    photo: '/team-headshots/Giselle-Melendez-Cruz-unified-gray.jpg',
+    focus: '50% 28%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/giselle-melendez/',
+    email: 'Giselle.Melendez-Cruz@SunstoneCities.com',
+    bio: 'Giselle Melendez-Cruz brings hands-on experience coordinating nonprofit operations and housing/economic stability initiatives across Los Angeles County.',
+  },
+  {
+    id: 't8',
+    name: 'Hannah Cruz',
+    title: 'Research & Management Analyst',
+    photo: '/team-headshots/Hannah-Cruz-unified-gray.jpg',
+    focus: '50% 24%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/hannahacruz/',
+    email: 'Hannah.Cruz@SunstoneCities.com',
+    bio: 'Hannah Cruz holds a Master of Public Administration from USC and brings cross-sector nonprofit and private-sector experience to develop data-informed, strategic solutions for cities and nonprofits.',
+  },
+  {
+    id: 't9',
+    name: 'Jade Le',
+    title: 'Project Financing Analyst',
+    photo: '/team-headshots/Jade-Le-unified-gray.jpg',
+    focus: '50% 25%',
+    zoom: 1,
+    linkedin: 'https://www.linkedin.com/in/jade-le-6401431a2/',
+    email: 'Jade.Le@Sunstonecities.com',
+    bio: 'Jade Le holds a Master of Public Policy from UC Riverside and specializes in public-private partnerships, bringing capital to infrastructure development projects.',
   },
 ]
 

@@ -8,18 +8,15 @@ import {
 } from 'lucide-react'
 import { Reveal } from '@/components/motion/primitives'
 import { SectionHeading } from '@/components/section-heading'
-import { getFeaturedLumaEvent } from '@/lib/luma-events'
+import { events } from '@/lib/site-data'
 
 const primaryCtaClass =
   'shine group inline-flex w-fit items-center gap-2.5 rounded-full bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-[0_12px_32px_-8px_rgba(78,114,217,0.45)] transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[0_18px_40px_-10px_rgba(78,114,217,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#e7edf5]'
 
-export async function UpcomingEvents() {
-  const event = await getFeaturedLumaEvent()
+export function UpcomingEvents() {
+  const event = events[0]
 
   if (!event) return null
-
-  const eventUrl = event.url || 'https://luma.com/sunstonecities'
-  const isExternalEventUrl = eventUrl.startsWith('http')
 
   return (
     <section
@@ -43,7 +40,7 @@ export async function UpcomingEvents() {
               >
                 <Image
                   src={event.image}
-                  alt={event.title}
+                  alt="Sunstone Economic Development Challenge participants at USC Price"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   quality={100}
@@ -56,6 +53,9 @@ export async function UpcomingEvents() {
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                     Upcoming Event
                   </p>
+                  <span className="rounded-full bg-[#e7f1fb] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1D6EAF]">
+                    Infrastructure leadership
+                  </span>
                 </div>
 
                 <h2 className="mt-5 max-w-xl text-balance font-display text-2xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-3xl">
@@ -78,12 +78,12 @@ export async function UpcomingEvents() {
                 </dl>
 
                 <a
-                  href={eventUrl}
-                  target={isExternalEventUrl ? '_blank' : undefined}
-                  rel={isExternalEventUrl ? 'noopener noreferrer' : undefined}
+                  href="https://luma.com/opy2m4ti"
+                  target="_blank"
+                  rel="noreferrer"
                   className={`${primaryCtaClass} mt-9`}
                 >
-                  {event.ctaLabel || 'Register Now'}
+                  Register Now
                   <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </div>
@@ -98,7 +98,7 @@ export async function UpcomingEvents() {
               <a
                 href="https://www.youtube.com/watch?v=q7srMeq1dx8"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
                 className="group relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
                 aria-label="Watch Powering California's Workforce on YouTube"
               >
@@ -119,6 +119,9 @@ export async function UpcomingEvents() {
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                     Latest Video
                   </p>
+                  <span className="rounded-full bg-[#e7f1fb] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1D6EAF]">
+                    Field Notes
+                  </span>
                 </div>
 
                 <h2 className="mt-5 max-w-xl text-balance font-display text-3xl font-semibold leading-[1.12] tracking-tight text-foreground sm:text-4xl">
@@ -133,7 +136,7 @@ export async function UpcomingEvents() {
                 <a
                   href="https://www.youtube.com/@sunstonecities"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer"
                   className={`${primaryCtaClass} mt-9`}
                 >
                   More Videos

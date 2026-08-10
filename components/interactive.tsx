@@ -13,7 +13,6 @@ import {
   useTransform,
   useInView,
   useMotionValueEvent,
-  useReducedMotion,
 } from 'motion/react'
 import { cn } from '@/lib/utils'
 
@@ -57,7 +56,6 @@ export function TiltCard({
   max?: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const shouldReduceMotion = useReducedMotion()
   const px = useMotionValue(0.5)
   const py = useMotionValue(0.5)
   const rx = useSpring(useTransform(py, [0, 1], [max, -max]), {
@@ -70,7 +68,6 @@ export function TiltCard({
   })
 
   function onMove(e: ReactMouseEvent<HTMLDivElement>) {
-    if (shouldReduceMotion) return
     const el = ref.current
     if (!el) return
     const rect = el.getBoundingClientRect()
@@ -85,9 +82,9 @@ export function TiltCard({
   return (
     <motion.div
       ref={ref}
-      onMouseMove={shouldReduceMotion ? undefined : onMove}
-      onMouseLeave={shouldReduceMotion ? undefined : reset}
-      style={shouldReduceMotion ? undefined : { rotateX: rx, rotateY: ry, transformPerspective: 900 }}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
       className={cn('[transform-style:preserve-3d]', className)}
     >
       {children}
@@ -106,12 +103,10 @@ export function Magnetic({
   strength?: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const shouldReduceMotion = useReducedMotion()
   const x = useSpring(useMotionValue(0), { stiffness: 250, damping: 18 })
   const y = useSpring(useMotionValue(0), { stiffness: 250, damping: 18 })
 
   function onMove(e: ReactMouseEvent<HTMLDivElement>) {
-    if (shouldReduceMotion) return
     const el = ref.current
     if (!el) return
     const rect = el.getBoundingClientRect()
@@ -126,9 +121,9 @@ export function Magnetic({
   return (
     <motion.div
       ref={ref}
-      onMouseMove={shouldReduceMotion ? undefined : onMove}
-      onMouseLeave={shouldReduceMotion ? undefined : reset}
-      style={shouldReduceMotion ? undefined : { x, y }}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      style={{ x, y }}
       className={cn('inline-block', className)}
     >
       {children}
@@ -151,7 +146,6 @@ export function CountUp({
   className?: string
 }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const shouldReduceMotion = useReducedMotion()
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const mv = useMotionValue(0)
   const spring = useSpring(mv, { stiffness: 60, damping: 18 })
@@ -166,7 +160,7 @@ export function CountUp({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {shouldReduceMotion ? to.toFixed(decimals) : display}
+      {display}
       {suffix}
     </span>
   )

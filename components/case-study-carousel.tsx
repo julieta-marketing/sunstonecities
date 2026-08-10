@@ -236,7 +236,7 @@ export function CaseStudyCarousel({
       >
         {caseStudies.map((study, index) => (
           <article
-            key={study.id}
+            key={study.title}
             id={`case-${study.id}`}
             ref={(node) => {
               slideRefs.current[index] = node
@@ -313,7 +313,7 @@ export function CaseStudyCarousel({
         <div className="flex items-center gap-2" role="group" aria-label="Choose a case study">
           {caseStudies.map((study, index) => (
             <button
-              key={study.id}
+              key={study.title}
               type="button"
               onClick={() => scrollToIndex(index)}
               aria-label={`View ${study.title}`}

@@ -11,9 +11,9 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { NewsCard } from '@/components/news-card'
 import { Stagger, StaggerItem } from '@/components/motion/primitives'
-import type { NewsItem } from '@/lib/site-data'
+import { news } from '@/lib/site-data'
 
-export function LatestNews({ items }: { items: NewsItem[] }) {
+export function LatestNews() {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const dragStartX = useRef(0)
   const dragStartScroll = useRef(0)
@@ -180,7 +180,7 @@ export function LatestNews({ items }: { items: NewsItem[] }) {
             className="news-carousel-track flex w-max gap-4 px-5 sm:gap-5 sm:px-8"
             once
           >
-            {items.map((item) => (
+            {news.map((item) => (
               <StaggerItem
                 key={item.id}
                 className="w-[calc(100vw-2.5rem)] max-w-[600px] shrink-0 snap-start md:w-[calc((100vw-5.25rem)/2)] xl:w-[calc((100vw-6.5rem)/3)]"

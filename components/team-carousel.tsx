@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { ArrowRight, Mail } from 'lucide-react'
 import { LinkedinIcon } from '@/components/brand-icons'
 import { cn } from '@/lib/utils'
-import type { TeamMember } from '@/lib/team-members'
+import type { TeamMember } from '@/lib/site-data'
 
 type TeamCarouselVariant = 'light' | 'dark'
 
@@ -20,8 +20,8 @@ function TeamCard({
 }) {
   const [flipped, setFlipped] = useState(false)
   const isDark = variant === 'dark'
-  const photoFocus = '50% 24%'
-  const photoZoom = 1
+  const photoFocus = member.focus ?? '50% 24%'
+  const photoZoom = member.zoom ?? 1.12
 
   return (
     <div className="[perspective:1400px]">

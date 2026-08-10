@@ -4,7 +4,6 @@ import {
   motion,
   useScroll,
   useTransform,
-  useReducedMotion,
   type Variants,
   type MotionValue,
 } from 'motion/react'
@@ -32,12 +31,6 @@ export function Reveal({
   as?: 'div' | 'span' | 'li' | 'section'
 }) {
   const MotionTag = motion[as]
-  const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <MotionTag className={className}>{children}</MotionTag>
-  }
-
   return (
     <MotionTag
       className={className}
@@ -84,12 +77,6 @@ export function Stagger({
   viewportAmount?: number
   viewportMargin?: string
 }) {
-  const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
-
   return (
     <motion.div
       className={className}
@@ -119,12 +106,6 @@ export function StaggerItem({
   y?: number
   duration?: number
 }) {
-  const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
-
   return (
     <motion.div
       className={className}
@@ -153,7 +134,6 @@ export function Parallax({
   distance?: number
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const shouldReduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
@@ -161,7 +141,7 @@ export function Parallax({
   const y = useTransform(scrollYProgress, [0, 1], [distance, -distance])
   return (
     <div ref={ref} className={cn('relative', className)}>
-      <motion.div style={shouldReduceMotion ? undefined : { y }} className="h-full w-full">
+      <motion.div style={{ y }} className="h-full w-full">
         {children}
       </motion.div>
     </div>
@@ -184,7 +164,6 @@ export function KineticHeading({
   delay?: number
   animateOnMount?: boolean
 }) {
-  const shouldReduceMotion = useReducedMotion()
   const words = text.split(' ')
   const normalizedWords = words.map((word) => word.replace(/[^\w]/g, ''))
   const highlightWords = highlight?.split(' ').filter(Boolean) ?? []
@@ -209,15 +188,6 @@ export function KineticHeading({
     <span className={cn('inline', className)}>
       {words.map((word, i) => {
         const isHi = highlightedIndexes.has(i)
-        if (shouldReduceMotion) {
-          return (
-            <span key={`${word}-${i}`} className={cn('inline-block', isHi && highlightClassName)}>
-              {word}
-              {i < words.length - 1 ? '\u00A0' : ''}
-            </span>
-          )
-        }
-
         return (
           <span
             key={`${word}-${i}`}

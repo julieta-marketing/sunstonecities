@@ -12,7 +12,6 @@ import { Reveal } from '@/components/motion/primitives'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { CaseStudyCarousel } from '@/components/case-study-carousel'
-import { projectFinancingCaseStudySlides } from '@/lib/project-financing-case-studies'
 
 export const metadata: Metadata = {
   title: 'Project Financing | Sunstone Cities',
@@ -79,11 +78,74 @@ const businessProjectTypes = [
   'Debt Refinance',
 ]
 
+const caseStudies = [
+  {
+    id: 'fin1',
+    title: 'UAB Medical West Hospital',
+    location: 'Alabama',
+    services: ['Public Infrastructure Financing Solutions'],
+    image:
+      '/case-studies/project-financing/uab-medical-west-hospital.jpg',
+    imageAlt: 'UAB Medical West Hospital exterior',
+    imagePosition: 'center',
+    challenge:
+      'The project required a complex financing structure to support the completion of a new 200-bed hospital, medical office building, and parking structure that would replace an aging healthcare facility and expand access to care for rural communities.',
+    solution:
+      'Project financing included a combination of EB-5 capital, bank financing, and federal loan guarantees to support the development of a new 200-bed hospital, medical office building, and parking structure.',
+    outcomes: [
+      'Supported a healthcare infrastructure project valued at over $425 million',
+      'Facilitated $8.8 million in EB-5 financing',
+      'Helped create 497 permanent jobs',
+      'Expanded healthcare access for rural communities',
+    ],
+  },
+  {
+    id: 'fin2',
+    title: "Gold’s Hampton Inn",
+    location: 'Nebraska',
+    services: ['Public Infrastructure Financing Solutions'],
+    image: '/case-studies/project-financing/golds-hampton-inn.jpg',
+    imageAlt: 'Gold’s Hampton Inn hotel exterior in downtown Lincoln',
+    imagePosition: 'center',
+    challenge:
+      "The historic Gold's Building required significant redevelopment to transform the underutilized property into a modern hospitality destination that could support downtown Lincoln's growing visitor and business economy.",
+    solution:
+      'Project financing supported the adaptive reuse and redevelopment of the historic building into a branded Hampton Inn by Hilton hotel, preserving a key downtown asset while introducing new lodging accommodations and visitor amenities.',
+    outcomes: [
+      'Redeveloped a historic building into a 115-room Hampton Inn',
+      'Expanded downtown lodging capacity',
+      'Supported tourism and economic activity',
+      'Revitalized an underutilized property',
+    ],
+  },
+  {
+    id: 'fin3',
+    title: 'Marcella Landing at Deer Valley',
+    location: 'Utah',
+    services: ['Infrastructure Financing Solutions'],
+    image:
+      '/case-studies/project-financing/marcella-landing-deer-valley.png',
+    imageAlt:
+      'Mountain resort development at Marcella Landing in Deer Valley',
+    imagePosition: 'center',
+    challenge:
+      'The project required a financing structure to support the development of a mixed-use resort condominium community, including residential units, hospitality amenities, and supporting infrastructure improvements.',
+    solution:
+      'Provided a financing package combining senior construction financing and C-PACE funding to support project development and infrastructure improvements.',
+    outcomes: [
+      'Closed a $115.4 million financing package',
+      'Supported the development of a 118-unit resort condominium community',
+      'Funded infrastructure and vertical construction',
+      'Advanced energy-efficient building improvements',
+    ],
+  },
+]
+
 export default function ProjectFinancingPage() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main id="main-content" tabIndex={-1}>
+      <main>
         <section className="relative overflow-hidden border-b border-border bg-gradient-to-br from-[#eaf3fb] via-white to-[#edf8fb] pb-20 pt-36 sm:pb-24 sm:pt-44">
           <div className="pointer-events-none absolute inset-0 bg-grid opacity-35" />
           <div className="pointer-events-none absolute -right-24 top-10 size-[30rem] rounded-full bg-[#1D6EAF]/12 blur-3xl" />
@@ -98,8 +160,11 @@ export default function ProjectFinancingPage() {
 
             <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.48fr] lg:items-end">
               <div>
-                <h1 className="max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
                   Project Financing
+                </p>
+                <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
+                  Capital that turns essential projects into reality.
                 </h1>
               </div>
               <p className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
@@ -368,7 +433,7 @@ export default function ProjectFinancingPage() {
             </div>
 
             <CaseStudyCarousel
-              caseStudies={projectFinancingCaseStudySlides}
+              caseStudies={caseStudies}
               ariaLabel="Project Financing case studies"
             />
           </div>

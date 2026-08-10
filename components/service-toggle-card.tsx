@@ -16,8 +16,6 @@ export function ServiceToggleCard({
   defaultOpen?: boolean
 }) {
   const [open, setOpen] = useState(defaultOpen)
-  const buttonId = `service-toggle-${service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
-  const panelId = `${buttonId}-panel`
 
   return (
     <div
@@ -27,12 +25,10 @@ export function ServiceToggleCard({
       )}
     >
       <button
-        id={buttonId}
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center gap-4 p-6 text-left sm:gap-6"
         aria-expanded={open}
-        aria-controls={panelId}
       >
         <span className="font-display text-sm font-medium tabular-nums text-primary">
           {String(index + 1).padStart(2, '0')}
@@ -55,9 +51,6 @@ export function ServiceToggleCard({
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
-            id={panelId}
-            role="region"
-            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

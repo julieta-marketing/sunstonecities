@@ -1,6 +1,6 @@
 import { SectionLabel } from '@/components/section-heading'
 import { TeamCarousel } from '@/components/team-carousel'
-import { teamMembers } from '@/lib/team-members'
+import { team } from '@/lib/site-data'
 
 /* Extracted from About() so it can be reordered independently on the
    homepage; markup/styling kept identical to its original embedded form. */
@@ -23,7 +23,7 @@ export function TeamSection() {
           Experts in public strategy, economic development, and communications.
         </p>
 
-        <TeamCarousel members={teamMembers} variant="dark" footerHref="/team" />
+        <TeamCarousel members={team} variant="dark" footerHref="/team" />
       </div>
     </section>
   )

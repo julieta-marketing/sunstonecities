@@ -89,16 +89,11 @@ export function ContactForm() {
         <FadeIn delay={0.15}>
           <div className="relative">
             {status === 'success' ? (
-              <div
-                role="status"
-                aria-live="polite"
-                className="flex min-h-[26rem] flex-col items-center justify-center rounded-lg border border-border/80 bg-white/88 p-8 text-center shadow-[0_28px_80px_-58px_rgba(15,58,99,0.5)] backdrop-blur"
-              >
+              <div className="flex min-h-[26rem] flex-col items-center justify-center rounded-lg border border-border/80 bg-white/88 p-8 text-center shadow-[0_28px_80px_-58px_rgba(15,58,99,0.5)] backdrop-blur">
                 <motion.div
                   initial={{ scale: 0.6, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                  aria-hidden="true"
                   className="flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground"
                 >
                   <Check className="size-8" />
@@ -113,7 +108,7 @@ export function ContactForm() {
                     setStatus('idle')
                     setError('')
                   }}
-                  className="mt-8 inline-flex items-center justify-center rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition-all hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="mt-8 inline-flex items-center justify-center rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition-all hover:border-primary/40 hover:text-primary"
                 >
                   Send another message
                 </button>
@@ -121,15 +116,13 @@ export function ContactForm() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                aria-busy={isSubmitting}
                 className="rounded-lg border border-border/80 bg-white/88 p-5 shadow-[0_28px_80px_-58px_rgba(15,58,99,0.5)] backdrop-blur sm:p-8"
               >
                 <input
-                  type="text"
                   tabIndex={-1}
                   autoComplete="off"
                   name="companyWebsite"
-                  className="hidden"
+                  className="sr-only"
                   aria-hidden="true"
                 />
 
@@ -190,11 +183,10 @@ export function ContactForm() {
 
                 {error && (
                   <div
-                    id="contact-form-error"
                     role="alert"
                     className="mt-5 flex gap-3 rounded-lg border border-[#f1c7bf] bg-[#fff7f5] p-4 text-sm leading-relaxed text-[#8b352c]"
                   >
-                    <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
+                    <AlertCircle className="mt-0.5 size-4 shrink-0" />
                     <p>{error}</p>
                   </div>
                 )}
@@ -202,14 +194,13 @@ export function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  aria-describedby={error ? 'contact-form-error' : undefined}
-                  className="shine group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-[0_12px_28px_-10px_rgba(78,114,217,0.6)] transition-all hover:-translate-y-0.5 hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="shine group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-[0_12px_28px_-10px_rgba(78,114,217,0.6)] transition-all hover:-translate-y-0.5 hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
                 >
                   {isSubmitting ? 'Sending message' : 'Send message'}
                   {isSubmitting ? (
-                    <Loader2 aria-hidden="true" className="size-4 animate-spin" />
+                    <Loader2 className="size-4 animate-spin" />
                   ) : (
-                    <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                   )}
                 </button>
               </form>

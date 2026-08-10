@@ -121,7 +121,7 @@ export function UscSunstoneChallenge() {
             <a
               href="https://www.instagram.com/usccmf/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
               className="group inline-flex w-fit items-center gap-2 font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-[#e7edf5]"
             >
               <svg

@@ -48,7 +48,7 @@ function renderHighlightedBody(body: string, highlights: string[]) {
     }
 
     parts.push(
-      <strong key={`${text}-${index}`} className="font-semibold text-foreground">
+      <strong key={`${text}-${index}`} className="font-semibold text-primary">
         {text}
       </strong>,
     )

@@ -68,8 +68,7 @@ export function NewsletterSubscribe() {
           <FadeIn delay={0.12}>
             <form
               onSubmit={handleSubmit}
-              aria-busy={status === 'loading'}
-              className="flex flex-col gap-3 rounded-3xl border border-border bg-white/90 p-2 shadow-[0_18px_55px_-38px_rgba(15,58,99,0.55)] backdrop-blur-sm sm:flex-row sm:items-center sm:rounded-full"
+              className="flex flex-col gap-3 rounded-full border border-border bg-white/90 p-2 shadow-[0_18px_55px_-38px_rgba(15,58,99,0.55)] backdrop-blur-sm sm:flex-row sm:items-center"
             >
               <label htmlFor="newsletter-email" className="sr-only">
                 Email address
@@ -81,7 +80,6 @@ export function NewsletterSubscribe() {
                   name="email"
                   type="email"
                   required
-                  aria-describedby={message ? 'newsletter-status' : undefined}
                   placeholder="Email address"
                   className="min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground/65"
                 />
@@ -105,11 +103,10 @@ export function NewsletterSubscribe() {
             </form>
             {message ? (
               <p
-                id="newsletter-status"
                 className={`mt-3 text-sm ${
                   status === 'error' ? 'text-red-600' : 'text-muted-foreground'
                 }`}
-                role={status === 'error' ? 'alert' : 'status'}
+                role="status"
               >
                 {message}
               </p>

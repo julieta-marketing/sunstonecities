@@ -38,12 +38,6 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        <a
-          href="#main-content"
-          className="sr-only fixed left-4 top-4 z-[100] rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg focus:not-sr-only"
-        >
-          Skip to main content
-        </a>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -17,8 +17,6 @@ export function FaqAccordion() {
           {column.map((faq, itemIndex) => {
             const index = columnIndex === 0 ? itemIndex : itemIndex + midpoint
             const isOpen = open === index
-            const buttonId = `faq-button-${index}`
-            const panelId = `faq-panel-${index}`
 
             return (
               <div
@@ -30,12 +28,9 @@ export function FaqAccordion() {
                 }`}
               >
                 <button
-                  id={buttonId}
-                  type="button"
                   onClick={() => setOpen(isOpen ? null : index)}
                   className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left sm:px-6"
                   aria-expanded={isOpen}
-                  aria-controls={panelId}
                 >
                   <span className="text-base font-medium leading-snug text-foreground sm:text-lg">
                     {faq.q}
@@ -55,9 +50,6 @@ export function FaqAccordion() {
                 <AnimatePresence initial={false}>
                   {isOpen ? (
                     <motion.div
-                      id={panelId}
-                      role="region"
-                      aria-labelledby={buttonId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

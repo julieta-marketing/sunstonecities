@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { SectionHeading } from '@/components/section-heading'
-import { sunstoneMoments, type SunstoneMoment } from '@/lib/sunstone-moments'
+import { pastEvents } from '@/lib/site-data'
 
 type EventGalleryRowProps = {
-  events: SunstoneMoment[]
+  events: typeof pastEvents
   direction: 'left' | 'right'
 }
 
@@ -25,16 +25,12 @@ function EventGalleryRow({ events, direction }: EventGalleryRowProps) {
             {events.map((event) => (
               <figure
                 key={`${isDuplicate ? 'duplicate' : 'original'}-${event.image}`}
-                className="events-gallery-card group relative aspect-[16/10] w-[78vw] max-w-[560px] shrink-0 overflow-hidden rounded-xl bg-muted shadow-[0_18px_50px_-36px_rgba(15,23,42,0.55)] sm:w-[46vw] lg:w-[34vw] xl:w-[30vw]"
+                className="group relative aspect-[16/10] w-[78vw] max-w-[560px] shrink-0 overflow-hidden rounded-xl bg-muted shadow-[0_18px_50px_-36px_rgba(15,23,42,0.55)] sm:w-[46vw] lg:w-[34vw] xl:w-[30vw]"
               >
                 <Image
                   src={event.image}
                   alt={isDuplicate ? '' : event.alt}
                   fill
-                  unoptimized
-                  loading="lazy"
-                  decoding="async"
-                  draggable={false}
                   sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, (max-width: 1280px) 34vw, 560px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                 />
@@ -54,8 +50,8 @@ function EventGalleryRow({ events, direction }: EventGalleryRowProps) {
 }
 
 export function EventsSection() {
-  const firstRow = sunstoneMoments.slice(0, 6)
-  const secondRow = sunstoneMoments.slice(6)
+  const firstRow = pastEvents.slice(0, 6)
+  const secondRow = pastEvents.slice(6)
 
   return (
     <section

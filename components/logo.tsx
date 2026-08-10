@@ -3,18 +3,15 @@ import { cn } from '@/lib/utils'
 
 interface LogoProps {
   className?: string
-  variant?: 'default' | 'dark'
 }
 
-export function Logo({ className, variant = 'default' }: LogoProps) {
-  const isDark = variant === 'dark'
-
+export function Logo({ className }: LogoProps) {
   return (
     <Image
-      src={isDark ? '/sunstone-cities-logo-dark.png' : '/sunstone-cities-logo.png'}
+      src="/sunstone-cities-logo.png"
       alt="Sunstone Cities"
-      width={isDark ? 813 : 820}
-      height={isDark ? 297 : 280}
+      width={820}
+      height={280}
       priority
       className={cn('h-9 w-auto', className)}
     />

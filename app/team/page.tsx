@@ -9,7 +9,6 @@ import { SectionLabel } from '@/components/section-heading'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { TeamPhotoCard } from '@/components/team-photo-card'
-import { teamMembers } from '@/lib/team-members'
 
 export const metadata: Metadata = {
   title: 'Our Team | Sunstone Cities',
@@ -27,9 +26,93 @@ const managingMembers = [
   { name: 'Ryan Phong', image: '/team/ownership-ryan.jpg' },
 ]
 
+const profiles = [
+  {
+    name: 'John Keisler',
+    title: 'Chief Executive Officer & Managing Member',
+    image: '/team-headshots/John-Keisler-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/jpkeisler/',
+    email: 'John.Keisler@SunstoneCities.com',
+    description:
+      'John P. Keisler is an experienced economic development leader with a proven track record in both the public and private sectors. As CEO and Managing Member of Sunstone Cities, he leads efforts to advance inclusive economic growth through strategic investment, public-private partnerships, and entrepreneurial ecosystem development. With more than two decades of public service, including his tenure as Economic Development Director for the City of Long Beach, John played a key role in driving private investment, launching the city’s first Economic Development Blueprint, and establishing the Economic Development Commission. He also founded the Long Beach Economic Partnership and helped create the Long Beach Accelerator through a collaborative public-private-education model. Through Sunstone, John continues to support cities in designing forward-looking strategies that promote sustainable economic development and job creation.',
+  },
+  {
+    name: 'Jayro Sandoval',
+    title: 'Economic Development Manager & Managing Member',
+    image: '/team-headshots/Jayro-Sandoval-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/jayrosandoval/',
+    email: 'Jayro.Sandoval@SunstoneCities.com',
+    description:
+      'Jayro Sandoval has led and advised public and nonprofit initiatives focused on racial justice, arts equity, and economic inclusion across Southern California. As a Commissioner on the City of Long Beach Economic Development Commission, Jayro has helped shape policy recommendations that center small businesses and historically underserved communities. His leadership with organizations including the Arts Council for Long Beach and the Long Beach Economic Partnership has advanced strategies to close equity gaps in access to public funding, creative spaces, and workforce development.',
+  },
+  {
+    name: 'Ryan Phong',
+    title: 'Project Manager & Managing Member',
+    image: '/team-headshots/Ryan-Phong-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/ryanphong/',
+    email: 'Ryan.Phong@SunstoneCities.com',
+    description:
+      'Ryan cultivates partnerships with local governments and manages consulting projects that advance economic development, infrastructure planning, and public-sector initiatives. He develops research reports, policy memos, and presentations that provide actionable insights to public agencies, and supports communities in securing funding through clean energy retrofits, government grants and loans, and public-private partnership financing. Ryan also serves as program advisor for the annual USC Economic Development Challenge.',
+  },
+  {
+    name: 'Jennifer Huang',
+    title: 'Director of Marketing, Communications & Community Engagement',
+    image: '/team-headshots/Jennifer-Huang-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/jenniferehuang/',
+    email: 'Jennifer.Huang@SunstoneInvestment.com',
+    description:
+      'Jennifer Huang brings more than a decade of enterprise-wide communications and strategic engagement experience. She leads organizational branding, messaging strategy, and community partnerships across multiple sectors. Her public-private partnership work includes helping coordinate the Long Beach Accelerator and developing the inaugural Irvine Tech Day with City of Irvine councilmembers and UC Irvine. Jennifer’s P3 Strategy Series was recognized by the California State Treasurer for highlighting best practices in public-private partnerships.',
+  },
+  {
+    name: 'Harry Saltzgaver',
+    title: 'Managing Editor',
+    image: '/team-headshots/Harry-Saltzgaver-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/harry-saltzgaver-442498268/',
+    email: 'Harry.Saltzgaver@SunstoneInvestment.com',
+    description:
+      'With more than 45 years of experience as a journalist, editor, and civic advocate, Harry Saltzgaver has long used storytelling to illuminate issues of justice, reconciliation, and community resilience. During his tenure as Executive Editor of the Grunion Gazette, he published in-depth coverage of restorative justice programs, youth leadership initiatives, and interfaith healing efforts. At Sunstone Cities, Harry writes feature stories, public narratives, and op-eds that center voices often left out of traditional media coverage.',
+  },
+  {
+    name: 'Julie Ta',
+    title: 'Marketing Associate',
+    image: '/team-headshots/Julie-Ta-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/julieta02/',
+    email: 'Julie.Ta@SunstoneInvestment.com',
+    description:
+      'Julie Ta brings a versatile background in social media management, marketing, website design, content creation, and event planning. Focused on using creativity to create meaningful change, she develops innovative marketing strategies that support community impact. At Sunstone Cities, Julie elevates the firm’s presence across platforms by showcasing key projects and initiatives that advance economic development.',
+  },
+  {
+    name: 'Giselle Melendez-Cruz',
+    title: 'Research & Management Analyst',
+    image: '/team-headshots/Giselle-Melendez-Cruz-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/giselle-melendez/',
+    email: 'Giselle.Melendez-Cruz@SunstoneCities.com',
+    description:
+      'Giselle Melendez-Cruz brings hands-on experience coordinating nonprofit operations and supporting economic stability initiatives across Los Angeles County. Her work has included community outreach, housing workshops, and connecting residents to resources in partnership with the Housing Authority of the City of Los Angeles. She is committed to improving economic quality of life for underserved communities through strategic services and public-private partnerships.',
+  },
+  {
+    name: 'Hannah Cruz',
+    title: 'Research & Management Analyst',
+    image: '/team-headshots/Hannah-Cruz-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/hannahacruz/',
+    email: 'Hannah.Cruz@SunstoneCities.com',
+    description:
+      'Hannah Cruz holds a Master of Public Administration from the University of Southern California and brings cross-sector experience spanning nonprofit and private organizations. Her background includes fundraising, marketing, educational initiatives, product development, process improvement, and community-focused work. Hannah develops innovative, data-informed solutions that help cities and nonprofits strengthen operations and serve their communities more equitably.',
+  },
+  {
+    name: 'Jade Le',
+    title: 'Project Financing Analyst',
+    image: '/team-headshots/Jade-Le-unified-gray.jpg',
+    linkedin: 'https://www.linkedin.com/in/jade-le-6401431a2/',
+    email: 'Jade.Le@Sunstonecities.com',
+    description:
+      'Jade Le holds a Master of Public Policy from the University of California, Riverside, with a concentration in business and environmental policy. Drawing on public-sector experience, she brings policy knowledge, practical problem solving, and a commitment to sustainable innovation to Sunstone Cities. As part of the Public Infrastructure Financing Solutions team, Jade specializes in public-private partnerships and bringing capital to infrastructure development projects.',
+  },
+]
+
 export default function TeamPage() {
   return (
-    <main id="main-content" tabIndex={-1} className="min-h-screen overflow-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <SiteHeader />
 
       <section className="relative isolate overflow-hidden border-b border-primary/10 px-5 pb-20 pt-36 sm:px-8 sm:pb-24 sm:pt-44">
@@ -120,7 +203,7 @@ export default function TeamPage() {
           </Reveal>
 
           <div className="mt-14 divide-y divide-primary/12 border-y border-primary/12 sm:mt-16">
-            {teamMembers.map((profile, index) => (
+            {profiles.map((profile, index) => (
               <Reveal
                 key={profile.name}
                 className="group grid gap-8 py-12 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-14"
@@ -134,7 +217,7 @@ export default function TeamPage() {
                 >
                   <div className="relative aspect-[4/5]">
                     <Image
-                      src={profile.photo}
+                      src={profile.image}
                       alt={`${profile.name}, ${profile.title}`}
                       fill
                       sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw"
@@ -162,7 +245,7 @@ export default function TeamPage() {
                     {profile.title}
                   </p>
                   <p className="mt-6 max-w-3xl text-base leading-[1.75] text-muted-foreground sm:text-[1.0625rem]">
-                    {profile.fullIntroduction}
+                    {profile.description}
                   </p>
 
                   <div className="mt-8 flex flex-wrap gap-3">

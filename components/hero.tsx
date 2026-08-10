@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import Image from 'next/image'
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import { KineticHeading } from '@/components/motion/primitives'
 import { Magnetic } from '@/components/interactive'
@@ -10,7 +10,6 @@ import { marqueeItems } from '@/lib/site-data'
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null)
-  const shouldReduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -25,11 +24,11 @@ export function Hero() {
     <section
       id="top"
       ref={ref}
-      className="hero-shell grain relative flex min-h-[67svh] flex-col justify-end overflow-hidden"
+      className="grain relative flex min-h-[67svh] flex-col justify-end overflow-hidden"
     >
       {/* Parallax background */}
       <motion.div
-        style={shouldReduceMotion ? undefined : { y: imageY, scale: imageScale }}
+        style={{ y: imageY, scale: imageScale }}
         className="absolute inset-0 z-0"
       >
         <Image
@@ -62,42 +61,42 @@ export function Hero() {
 
       {/* Content */}
       <motion.div
-        style={shouldReduceMotion ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="hero-content relative z-10 mx-auto w-full max-w-6xl px-5 pb-14 pt-28 sm:px-8 sm:pt-32"
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-14 sm:px-8"
       >
-        <h1 className="hero-title max-w-5xl font-display text-4xl font-bold leading-[1.02] tracking-tight text-balance text-[#1c244b] sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-5xl font-display text-4xl font-bold leading-[1.02] tracking-tight text-balance text-[#1c244b] sm:text-6xl lg:text-7xl">
           <KineticHeading text="Enriching communities" animateOnMount delay={0.3} />
           <br />
           <KineticHeading
             text="through economic development"
             highlight="economic development"
-            highlightClassName="font-bold text-primary"
+            highlightClassName="font-bold text-[#467ff7]"
             animateOnMount
             delay={0.5}
           />
         </h1>
 
-        <div className="hero-copy-row mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <motion.p
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={shouldReduceMotion ? undefined : { duration: 0.8, delay: 0.9 }}
-            className="hero-summary max-w-md text-pretty text-base font-medium leading-relaxed text-[#3a4260] sm:text-lg"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="max-w-md text-pretty text-base font-medium leading-relaxed text-[#3a4260] sm:text-lg"
           >
             Sunstone Cities partners with local governments to unlock growth,
             attract investment, and deliver projects that strengthen communities.
           </motion.p>
 
           <motion.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={shouldReduceMotion ? undefined : { duration: 0.8, delay: 1 }}
-            className="hero-actions flex items-center gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="flex items-center gap-3"
           >
             <Magnetic strength={0.4}>
               <a
                 href="#contact"
-                className="hero-cta shine group inline-flex items-center gap-2.5 rounded-full bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-[0_12px_32px_-8px_rgba(78,114,217,0.6)] ring-1 ring-primary-dark/20 transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[0_18px_40px_-10px_rgba(78,114,217,0.7)]"
+                className="shine group inline-flex items-center gap-2.5 rounded-full bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-[0_12px_32px_-8px_rgba(78,114,217,0.6)] ring-1 ring-primary-dark/20 transition-all hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-[0_18px_40px_-10px_rgba(78,114,217,0.7)]"
               >
                 Contact Us
                 <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -105,7 +104,7 @@ export function Hero() {
             </Magnetic>
             <a
               href="#services"
-              className="hero-cta inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-4 text-base font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:text-primary"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-4 text-base font-semibold text-foreground shadow-sm transition-colors hover:border-primary hover:text-primary"
             >
               Our Services
             </a>
@@ -117,7 +116,7 @@ export function Hero() {
           A fixed dark scrim (not just text color) keeps contrast consistent
           against the hero photo's varying brightness left-to-right — a light
           overlay here would wash out over the photo's brighter areas. */}
-      <div className="hero-marquee relative z-10 border-y border-white/15 bg-[#0F3A63]/85 py-4 backdrop-blur-sm">
+      <div className="relative z-10 border-y border-white/15 bg-[#0F3A63]/85 py-4 backdrop-blur-sm">
         <div className="marquee-mask overflow-hidden">
           <div className="flex w-max animate-marquee items-center">
             {[...marqueeItems, ...marqueeItems].map((item, i) => (

@@ -76,10 +76,10 @@ export function ContactForm() {
           <FadeIn delay={0.2}>
             <div className="mt-10 space-y-4 border-t border-border pt-8">
               <a
-                href="mailto:hello@sunstonecities.com"
+                href="mailto:contact@sunstonecities.com"
                 className="block font-display text-2xl font-semibold text-foreground transition-colors hover:text-primary"
               >
-                hello@sunstonecities.com
+                contact@sunstonecities.com
               </a>
               <p className="text-muted-foreground">+1 (415) 555-0148</p>
             </div>

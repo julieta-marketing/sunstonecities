@@ -263,7 +263,7 @@ export default function ProjectConsultingPage() {
                         </a>
                       ) : (
                         <a
-                          href={`mailto:hello@sunstonecities.com?subject=${encodeURIComponent(
+                          href={`mailto:contact@sunstonecities.com?subject=${encodeURIComponent(
                             `${service.title} 1-pager`,
                           )}`}
                           className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"

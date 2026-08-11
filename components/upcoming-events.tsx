@@ -78,7 +78,7 @@ export function UpcomingEvents() {
                 </dl>
 
                 <a
-                  href="https://luma.com/opy2m4ti"
+                  href="https://luma.com/sunstonecities"
                   target="_blank"
                   rel="noreferrer"
                   className={`${primaryCtaClass} mt-9`}

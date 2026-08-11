@@ -31,17 +31,21 @@ const navEntries: NavEntry[] = [
     type: 'dropdown',
     label: 'Events',
     items: [
-      { label: 'Upcoming Events', href: 'https://luma.com/opy2m4ti', external: true },
+      { label: 'Upcoming Events', href: 'https://luma.com/sunstonecities', external: true },
       { label: 'USC Partnership', href: '/usc-price-partnership' },
     ],
   },
   { type: 'link', label: 'Gallery', href: '/#events-full' },
 ]
 
-export function SiteHeader() {
+export function SiteHeader({ darkTop = false }: { darkTop?: boolean }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [mobileOpenLabel, setMobileOpenLabel] = useState<string | null>(null)
+
+  // Text color for the unscrolled (transparent) header. On pages with a dark
+  // hero (darkTop), use light text so the nav stays legible; otherwise dark navy.
+  const topText = darkTop ? 'text-white/90' : 'text-[#1c2d50]'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -89,7 +93,7 @@ export function SiteHeader() {
                   href={entry.href}
                   className={cn(
                     'group relative rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-foreground',
-                    scrolled ? 'text-muted-foreground' : 'text-[#1c2d50]',
+                    scrolled ? 'text-muted-foreground' : topText,
                   )}
                 >
                   {entry.label}
@@ -101,7 +105,7 @@ export function SiteHeader() {
                     openOnHover
                     className={cn(
                       'group relative inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-foreground data-[popup-open]:text-foreground',
-                      scrolled ? 'text-muted-foreground' : 'text-[#1c2d50]',
+                      scrolled ? 'text-muted-foreground' : topText,
                     )}
                   >
                     {entry.label}
@@ -147,7 +151,9 @@ export function SiteHeader() {
                 'inline-flex size-10 items-center justify-center rounded-full border md:hidden',
                 scrolled
                   ? 'border-border text-foreground'
-                  : 'border-[#1c2d50]/25 bg-transparent text-[#1c2d50]',
+                  : darkTop
+                    ? 'border-white/40 bg-transparent text-white'
+                    : 'border-[#1c2d50]/25 bg-transparent text-[#1c2d50]',
               )}
               aria-label="Open menu"
             >

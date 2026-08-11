@@ -61,21 +61,19 @@ const involvement: Array<{
     title: 'Join the Board',
     description: 'Connect with the City/County Management Fellowship Board.',
     action: 'Contact Peter Castro',
-    href: 'https://priceschool.usc.edu/academics/masters/master-of-public-administration-mpa/city-county-management-fellowship/',
+    href: 'mailto:Peter.Castro@cityofrc.us',
     image: '/usc-challenge/get-involved-board.png',
     imageAlt:
       'USC Price City County Management Fellowship community gathered outside Ralph and Goldy Lewis Hall',
-    external: true,
   },
   {
     title: 'Serve as Mentors',
     description: 'Guide USC Price students as they develop actionable strategies.',
     action: 'Contact Nico DeAnda-Scaia',
-    href: 'https://sites.usc.edu/sunstone-price-challenge/',
+    href: 'mailto:nqdeanda@gmail.com',
     image: '/usc-challenge/get-involved-mentors.jpg',
     imageAlt:
       'Mentor greeting a participant during a collaborative USC Price event',
-    external: true,
   },
 ]
 
@@ -118,7 +116,7 @@ const programYears: {
     description:
       'Participation reached Northern California and rural communities, broadening the program’s geographic and economic development perspective.',
     clients: [
-      { name: 'City of Carson', logo: '/usc-challenge/city-of-carson.jpg' },
+      { name: 'City of Carson', logo: '/usc-challenge/city-of-carson-updated-seal.png' },
       { name: 'City of Glendora', logo: '/usc-challenge/city-of-glendora.png' },
       { name: 'Nevada City', logo: '/usc-challenge/nevada-city.png' },
       { name: 'City of Cypress', logo: '/usc-challenge/city-of-cypress.png' },
@@ -226,7 +224,7 @@ const eventAlbumPhotos: EventAlbumPhoto[] = [
 export default function UscPricePartnershipPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <SiteHeader />
+      <SiteHeader darkTop />
 
       <section className="relative isolate flex min-h-[720px] items-end overflow-hidden bg-[#0F3A63] pb-20 pt-36 text-white sm:pb-24 sm:pt-44 lg:min-h-[780px] lg:pb-28">
         <Image
@@ -399,7 +397,7 @@ export default function UscPricePartnershipPage() {
           </Reveal>
 
           <div className="mt-14 space-y-4">
-            {programYears.map((year, index) => (
+            {[...programYears].reverse().map((year, index) => (
               <Reveal key={year.years} delay={index * 0.04}>
                 <article className="grid gap-8 rounded-2xl border border-border bg-muted p-7 transition-colors duration-500 hover:bg-white sm:p-9 lg:grid-cols-[0.35fr_0.65fr] lg:gap-14">
                   <div>

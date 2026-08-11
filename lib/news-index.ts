@@ -39,8 +39,7 @@ export const newsIndex: NewsIndexItem[] = [
     category: 'The P3 Builder',
     excerpt:
       'California and Japan share infrastructure, energy, and modernization priorities that can be advanced through public-private partnership and PFI models.',
-    image:
-      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Media-1-dAXkfrtDZkpKWmBli8WRQYOKteHfSt.jpg',
+    image: '/news/japan-p3-828-25.png',
   },
   {
     id: 'n7',
@@ -50,7 +49,7 @@ export const newsIndex: NewsIndexItem[] = [
     category: 'The P3 Builder',
     excerpt:
       'How Long Beach used public-private-education partnerships to turn aerospace industry transition into the growing Space Beach cluster.',
-    image: '/event-usc-economic-development-challenge.jpg',
+    image: '/news/space-beach-media-1.jpg',
   },
   {
     id: 'n8',

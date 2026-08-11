@@ -87,7 +87,7 @@ const caseStudies = [
   {
     id: 'cons2',
     title: 'City of Lakewood',
-    image: '/case-studies/project-consulting/lakewood-city-hall.jpg',
+    image: '/case-studies/project-consulting/lakewood-city-hall.png',
     imageAlt: 'Lakewood City Hall exterior',
     imagePosition: 'center',
     services: [

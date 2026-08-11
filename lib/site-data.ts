@@ -698,7 +698,7 @@ export const featuredConsultingCaseStudies: FeaturedCaseStudy[] = [
         label: 'public, private, and community partners',
       },
     ],
-    image: '/case-studies/project-consulting/lakewood-city-hall.jpg',
+    image: '/case-studies/project-consulting/lakewood-city-hall.png',
     link: '/services/project-consulting#case-cons2',
   },
   {

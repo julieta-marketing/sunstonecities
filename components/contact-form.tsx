@@ -81,7 +81,7 @@ export function ContactForm() {
               >
                 contact@sunstonecities.com
               </a>
-              <p className="text-muted-foreground">+1 (415) 555-0148</p>
+              <p className="text-muted-foreground">+1 (949) 771-1764</p>
             </div>
           </FadeIn>
         </div>

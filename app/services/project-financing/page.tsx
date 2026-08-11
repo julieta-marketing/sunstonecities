@@ -316,75 +316,21 @@ export default function ProjectFinancingPage() {
                     economic development projects.
                   </p>
 
-                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
-                    <div className="space-y-8">
-                      <div>
-                        <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
-                          Featured Deliverables
-                        </p>
-                        <ul className="mt-4 space-y-3">
-                          {growthCapitalDeliverables.map((item) => (
-                            <li
-                              key={item}
-                              className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
-                            >
-                              <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
-                          Loan Types
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {loanTypes.map((item) => (
-                            <span
-                              key={item}
-                              className="rounded-full border border-primary/15 bg-[#f3f6fb] px-3 py-1.5 text-xs font-semibold text-foreground"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-8">
-                      <div>
-                        <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
-                          Construction & Project Financing
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {constructionProjectTypes.map((item) => (
-                            <span
-                              key={item}
-                              className="rounded-full border border-primary/15 bg-[#f3f6fb] px-3 py-1.5 text-xs font-semibold text-foreground"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
-                          Business & SBA Financing
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {businessProjectTypes.map((item) => (
-                            <span
-                              key={item}
-                              className="rounded-full border border-primary/15 bg-[#f3f6fb] px-3 py-1.5 text-xs font-semibold text-foreground"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                  <div className="mt-8">
+                    <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
+                      Featured Deliverables
+                    </p>
+                    <ul className="mt-4 space-y-3">
+                      {growthCapitalDeliverables.map((item) => (
+                        <li
+                          key={item}
+                          className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
                   <a
@@ -410,6 +356,60 @@ export default function ProjectFinancingPage() {
                   conditions.
                 </p>
               </div>
+            </div>
+          </section>
+
+          <section className="relative isolate overflow-hidden border-t border-border py-16 sm:py-20 lg:py-24">
+            <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
+              <Reveal className="grid gap-8 md:grid-cols-3">
+                <div>
+                  <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
+                    Loan Types
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {loanTypes.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-primary/15 bg-[#f3f6fb] px-3 py-1.5 text-xs font-semibold text-foreground"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
+                    Construction & Project Financing
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {constructionProjectTypes.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-primary/15 bg-[#f3f6fb] px-3 py-1.5 text-xs font-semibold text-foreground"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-primary">
+                    Business & SBA Financing
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {businessProjectTypes.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-primary/15 bg-[#f3f6fb] px-3 py-1.5 text-xs font-semibold text-foreground"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </section>
         </div>

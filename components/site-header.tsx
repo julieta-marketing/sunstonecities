@@ -11,30 +11,37 @@ type NavLink = { type: 'link'; label: string; href: string }
 type NavDropdown = {
   type: 'dropdown'
   label: string
-  items: { label: string; href: string }[]
+  items: { label: string; href: string; external?: boolean }[]
 }
 type NavEntry = NavLink | NavDropdown
 
 const navEntries: NavEntry[] = [
   { type: 'link', label: 'About', href: '/#about' },
-  { type: 'link', label: 'News', href: '/#news' },
+  { type: 'link', label: 'News', href: '/news' },
   {
     type: 'dropdown',
     label: 'Services',
     items: [
-      { label: 'Project Consulting Services', href: '/services/project-consulting' },
+      { label: 'Project Consulting', href: '/services/project-consulting' },
       { label: 'Project Financing', href: '/services/project-financing' },
     ],
   },
   { type: 'link', label: 'Team', href: '/team' },
-  { type: 'link', label: 'Events', href: '/#events' },
+  {
+    type: 'dropdown',
+    label: 'Events',
+    items: [
+      { label: 'Upcoming Events', href: 'https://luma.com/opy2m4ti', external: true },
+      { label: 'USC Partnership', href: '/usc-price-partnership' },
+    ],
+  },
   { type: 'link', label: 'Gallery', href: '/#events-full' },
 ]
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [mobileOpenLabel, setMobileOpenLabel] = useState<string | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -44,7 +51,7 @@ export function SiteHeader() {
   }, [])
 
   useEffect(() => {
-    if (!open) setMobileServicesOpen(false)
+    if (!open) setMobileOpenLabel(null)
   }, [open])
 
   useEffect(() => {
@@ -109,6 +116,9 @@ export function SiteHeader() {
                             key={item.href}
                             href={item.href}
                             closeOnClick
+                            {...(item.external
+                              ? { target: '_blank', rel: 'noopener noreferrer' }
+                              : {})}
                             className="block cursor-pointer rounded-xl px-3.5 py-2.5 text-sm font-medium text-muted-foreground outline-none transition-colors data-[highlighted]:bg-muted data-[highlighted]:text-foreground"
                           >
                             {item.label}
@@ -196,20 +206,22 @@ export function SiteHeader() {
                     >
                       <button
                         type="button"
-                        onClick={() => setMobileServicesOpen((v) => !v)}
-                        aria-expanded={mobileServicesOpen}
+                        onClick={() =>
+                          setMobileOpenLabel((v) => (v === entry.label ? null : entry.label))
+                        }
+                        aria-expanded={mobileOpenLabel === entry.label}
                         className="flex w-full items-center justify-between py-5 font-display text-3xl font-medium text-foreground"
                       >
                         {entry.label}
                         <ChevronDown
                           className={cn(
                             'size-6 text-primary transition-transform duration-300',
-                            mobileServicesOpen && 'rotate-180',
+                            mobileOpenLabel === entry.label && 'rotate-180',
                           )}
                         />
                       </button>
                       <AnimatePresence initial={false}>
-                        {mobileServicesOpen && (
+                        {mobileOpenLabel === entry.label && (
                           <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
@@ -223,6 +235,9 @@ export function SiteHeader() {
                                   key={item.href}
                                   href={item.href}
                                   onClick={() => setOpen(false)}
+                                  {...(item.external
+                                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                                    : {})}
                                   className="flex items-center justify-between rounded-xl px-3 py-3 font-display text-lg font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                                 >
                                   {item.label}

@@ -3,7 +3,7 @@ title: "City of Lakewood"
 label: "Staff Augmentation / Economic Development Strategies / Marketing & Communications"
 summary: "Lakewood needed a roadmap to guide investment, business attraction, and long-term growth, so Sunstone Cities led the city's five-year Economic Development Strategic Plan through stakeholder engagement."
 date: "2026-04-01"
-image: "/case-studies/project-consulting/lakewood-city-hall.jpg"
+image: "/case-studies/project-consulting/lakewood-city-hall.png"
 ---
 
 ## Challenge

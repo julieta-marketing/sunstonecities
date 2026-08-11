@@ -44,8 +44,9 @@ const involvement: Array<{
     description: "Shape next year's Sunstone Economic Development Challenge.",
     action: 'Apply Now',
     href: 'https://sites.usc.edu/sunstone-price-challenge/',
-    image: '/usc-challenge/get-involved-participate.jpg',
-    imageAlt: 'Long Beach Civic Center glass building and landmark sign',
+    image: '/usc-challenge/get-involved-local-government-client.jpg',
+    imageAlt:
+      'Local government and public-sector leaders attending a Sunstone Cities event',
     external: true,
   },
   {

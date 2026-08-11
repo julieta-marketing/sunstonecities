@@ -18,12 +18,6 @@ export interface EventItem {
   image: string
 }
 
-export interface PastEvent {
-  image: string
-  tag: string
-  alt: string
-}
-
 export interface TeamMember {
   id: string
   name: string
@@ -234,84 +228,6 @@ export const events: EventItem[] = [
     excerpt:
       'A virtual information session for cities interested in participating in the fifth annual Sunstone Economic Development Challenge at USC Price.',
     image: '/event-usc-economic-development-challenge.jpg',
-  },
-]
-
-export const pastEvents: PastEvent[] = [
-  {
-    image: '/events-gallery/2025 CA Fwd Conference.jpg',
-    tag: '2025 CA Fwd Conference',
-    alt: '2025 CA Fwd Conference',
-  },
-  {
-    image: '/events-gallery/2025 CALED.png',
-    tag: '2025 CALED',
-    alt: '2025 CALED',
-  },
-  {
-    image: "/events-gallery/2025 Mayor's Fund for Long Beach.jpg",
-    tag: "2025 Mayor's Fund for Long Beach",
-    alt: "2025 Mayor's Fund for Long Beach",
-  },
-  {
-    image: '/events-gallery/2025 Resilient Cities Reception.png',
-    tag: '2025 Resilient Cities Reception',
-    alt: '2025 Resilient Cities Reception',
-  },
-  {
-    image: '/events-gallery/2026 Building Accelerators Panel.png',
-    tag: '2026 Building Accelerators Panel',
-    alt: '2026 Building Accelerators Panel',
-  },
-  {
-    image: '/events-gallery/2026 Industry Clusters Panel.png',
-    tag: '2026 Industry Clusters Panel',
-    alt: '2026 Industry Clusters Panel',
-  },
-  {
-    image: '/events-gallery/2026 MMASC Spring Forward Forum.png',
-    tag: '2026 MMASC Spring Forward Forum',
-    alt: '2026 MMASC Spring Forward Forum',
-  },
-  {
-    image: '/events-gallery/2026 Sunstone Economic Development Challenge.png',
-    tag: '2026 Sunstone Economic Development Challenge',
-    alt: '2026 Sunstone Economic Development Challenge',
-  },
-  {
-    image: '/events-gallery/2026 USC Price Student Team.png',
-    tag: '2026 USC Price Student Team',
-    alt: '2026 USC Price Student Team',
-  },
-  {
-    image: '/events-gallery/Aldo Cervantes, Community Development Director, City of Lakewood.png',
-    tag: 'Aldo Cervantes, Community Development Director, City of Lakewood',
-    alt: 'Aldo Cervantes, Community Development Director, City of Lakewood',
-  },
-  {
-    image: '/events-gallery/Andy Nakahata, Executive Director, IBank.png',
-    tag: 'Andy Nakahata, Executive Director, IBank',
-    alt: 'Andy Nakahata, Executive Director, IBank',
-  },
-  {
-    image: '/events-gallery/Brian Coleman, Project Financing Manager, GO-Biz.png',
-    tag: 'Brian Coleman, Project Financing Manager, GO-Biz',
-    alt: 'Brian Coleman, Project Financing Manager, GO-Biz',
-  },
-  {
-    image: '/events-gallery/Fiona Ma, California State Treasurer.png',
-    tag: 'Fiona Ma, California State Treasurer',
-    alt: 'Fiona Ma, California State Treasurer',
-  },
-  {
-    image: '/events-gallery/Glendale Tech Week with Mayor.png',
-    tag: 'Glendale Tech Week with Mayor',
-    alt: 'Glendale Tech Week with Mayor',
-  },
-  {
-    image: '/events-gallery/Gurbax Sahota, President & CEO, CALED.png',
-    tag: 'Gurbax Sahota, President & CEO, CALED',
-    alt: 'Gurbax Sahota, President & CEO, CALED',
   },
 ]
 

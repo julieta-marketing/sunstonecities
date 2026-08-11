@@ -342,6 +342,7 @@
     }
   }
   .events-gallery-row {
+    contain: layout paint style;
     -webkit-mask-image: linear-gradient(
       to right,
       transparent,
@@ -358,7 +359,15 @@
     );
   }
   .events-gallery-track {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
     will-change: transform;
+  }
+  .events-gallery-card {
+    backface-visibility: hidden;
+    contain: layout paint style;
+    transform: translate3d(0, 0, 0);
   }
   .events-gallery-track--left {
     animation: events-gallery-scroll-left 58s linear infinite;

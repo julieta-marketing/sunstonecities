@@ -1,5 +1,3 @@
-import { newsIndex } from '@/lib/news-index'
-
 export interface NewsItem {
   id: string
   slug: string
@@ -190,7 +188,7 @@ export const marqueeItems: string[] = [
   'Community Growth',
 ]
 
-export const news: NewsItem[] = newsIndex
+export const news: NewsItem[] = []
 
 export const newsArchive: NewsItem[] = [
   {

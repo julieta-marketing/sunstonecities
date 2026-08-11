@@ -2,10 +2,10 @@ import { ArrowRight } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { NewsCard } from '@/components/news-card'
 import { Stagger, StaggerItem } from '@/components/motion/primitives'
-import { news, newsArchive } from '@/lib/site-data'
+import { newsIndex } from '@/lib/news-index'
 
 export function NewsSection() {
-  const all = [...news, ...newsArchive]
+  const all = newsIndex
 
   return (
     <section id="news-archive" className="relative py-24 sm:py-32">

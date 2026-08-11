@@ -50,7 +50,7 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <article className="relative overflow-hidden">
           <section className="relative overflow-hidden bg-surface pt-32 pb-14 sm:pt-36 lg:pt-40">
             <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
@@ -65,50 +65,64 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
                 Back to news
               </Link>
 
-              <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.75fr)] lg:items-end">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                      {article.category}
-                    </span>
-                    <span className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                      <CalendarDays className="size-4 text-primary" />
-                      {article.date}
-                    </span>
-                  </div>
-
-                  <h1 className="mt-6 max-w-4xl font-display text-4xl font-semibold leading-[1.02] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                    {article.title}
-                  </h1>
-                  <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl">
-                    {article.deck}
-                  </p>
+              <div className="mt-10">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                    {article.category}
+                  </span>
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                    <CalendarDays className="size-4 text-primary" />
+                    {article.date}
+                  </span>
                 </div>
 
-                <figure className="overflow-hidden rounded-lg border border-border bg-card shadow-[0_30px_80px_-54px_rgba(15,58,99,0.45)]">
-                  <div className="relative aspect-[16/11]">
-                    <Image
-                      src={article.image}
-                      alt={article.title}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  {article.imageCaption && (
-                    <figcaption className="border-t border-border px-4 py-3 text-xs text-muted-foreground">
-                      {article.imageCaption}
-                    </figcaption>
-                  )}
-                </figure>
+                <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                  {article.title}
+                </h1>
+                <p className="mt-6 max-w-4xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl">
+                  {article.deck}
+                </p>
               </div>
+            </div>
+
+            <div className="relative z-10 mx-auto mt-12 max-w-6xl px-5 sm:px-8">
+              <figure className="overflow-hidden rounded-lg border border-border bg-card shadow-[0_32px_90px_-58px_rgba(15,58,99,0.55)]">
+                <div className="relative aspect-[16/9] min-h-[18rem] sm:min-h-[24rem] lg:aspect-[21/9]">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 1152px"
+                    className="object-cover"
+                  />
+                </div>
+                {article.imageCaption && (
+                  <figcaption className="border-t border-border bg-card/95 px-5 py-3 text-xs text-muted-foreground sm:px-6">
+                    {article.imageCaption}
+                  </figcaption>
+                )}
+              </figure>
             </div>
           </section>
 
           <section className="px-5 py-14 sm:px-8 sm:py-18">
             <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(17rem,0.28fr)] lg:items-start">
               <div className={cn(articleCardClass, 'order-2 lg:order-1')}>
+                {article.contentImage && (
+                  <figure className="mb-10 overflow-hidden rounded-lg border border-border bg-muted">
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src={article.contentImage}
+                        alt={`${article.title} content image`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </figure>
+                )}
+
                 <div className="space-y-12">
                   {article.sections.map((section) => (
                     <section key={section.heading} className="space-y-5">

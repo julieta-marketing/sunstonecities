@@ -10,15 +10,18 @@ import { EventsSection } from '@/components/events-section'
 import { NewsletterSubscribe } from '@/components/newsletter-subscribe'
 import { ContactForm } from '@/components/contact-form'
 import { SiteFooter } from '@/components/site-footer'
+import { getHomepageNews } from '@/lib/news-content'
 
 export default function Page() {
+  const latestNews = getHomepageNews(5)
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <About />
-        <LatestNews />
+        <LatestNews items={latestNews} />
         <div className="home-capabilities-background relative isolate overflow-hidden">
           <div
             aria-hidden="true"

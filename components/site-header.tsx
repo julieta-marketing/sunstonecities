@@ -114,7 +114,7 @@ export function SiteHeader({ darkTop = false }: { darkTop?: boolean }) {
                   </Menu.Trigger>
                   <Menu.Portal>
                     <Menu.Positioner className="z-50" sideOffset={10}>
-                      <Menu.Popup className="glass min-w-56 rounded-2xl border border-border p-1.5 shadow-[0_10px_40px_-20px_rgba(49,80,158,0.35)] outline-none transition-[opacity,transform] duration-200 data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0">
+                      <Menu.Popup className="glass w-max rounded-2xl border border-border p-1.5 shadow-[0_10px_40px_-20px_rgba(49,80,158,0.35)] outline-none transition-[opacity,transform] duration-200 data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0">
                         {entry.items.map((item) => (
                           <Menu.LinkItem
                             key={item.href}
@@ -123,7 +123,7 @@ export function SiteHeader({ darkTop = false }: { darkTop?: boolean }) {
                             {...(item.external
                               ? { target: '_blank', rel: 'noopener noreferrer' }
                               : {})}
-                            className="block cursor-pointer rounded-xl px-3.5 py-2.5 text-sm font-medium text-muted-foreground outline-none transition-colors data-[highlighted]:bg-muted data-[highlighted]:text-foreground"
+                            className="block cursor-pointer whitespace-nowrap rounded-xl px-3.5 py-2.5 text-sm font-medium text-muted-foreground outline-none transition-colors data-[highlighted]:bg-muted data-[highlighted]:text-foreground"
                           >
                             {item.label}
                           </Menu.LinkItem>

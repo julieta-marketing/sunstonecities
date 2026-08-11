@@ -43,7 +43,7 @@ const involvement: Array<{
     title: 'Participate as a Local Government Client',
     description: "Shape next year's Sunstone Economic Development Challenge.",
     action: 'Apply Now',
-    href: 'https://sites.usc.edu/sunstone-price-challenge/',
+    href: 'https://us12.list-manage.com/survey?u=2fd77d6c079360825b35bcbcd&id=6d92f21886&attribution=false',
     image: '/usc-challenge/get-involved-local-government-client.jpg',
     imageAlt:
       'Local government and public-sector leaders attending a Sunstone Cities event',
@@ -52,80 +52,43 @@ const involvement: Array<{
   {
     title: 'Sponsor',
     description: 'Support the annual Sunstone Economic Development Challenge.',
-    action: 'Contact John Keisler',
+    action: 'Contact Us',
     href: 'mailto:John.Keisler@SunstoneCities.com',
     image: '/usc-challenge/get-involved-sponsor.jpg',
     imageAlt:
       'Sunstone Cities representative speaking at a City County Management Fellowship event',
+    external: true,
   },
   {
     title: 'Join the Board',
     description: 'Connect with the City/County Management Fellowship Board.',
-    action: 'Contact Peter Castro',
-    href: 'mailto:Peter.Castro@cityofrc.us',
+    action: 'Contact Us',
+    href: 'https://priceschool.usc.edu/academics/masters/master-of-public-administration-mpa/city-county-management-fellowship/',
     image: '/usc-challenge/get-involved-board.png',
     imageAlt:
       'USC Price City County Management Fellowship community gathered outside Ralph and Goldy Lewis Hall',
+    external: true,
   },
   {
     title: 'Serve as Mentors',
     description: 'Guide USC Price students as they develop actionable strategies.',
-    action: 'Contact Nico DeAnda-Scaia',
-    href: 'mailto:nqdeanda@gmail.com',
+    action: 'Contact Us',
+    href: 'https://sites.usc.edu/sunstone-price-challenge/contact/',
     image: '/usc-challenge/get-involved-mentors.jpg',
     imageAlt:
       'Mentor greeting a participant during a collaborative USC Price event',
+    external: true,
   },
 ]
 
-type ProgramClient = { name: string; logo?: string }
+type ProgramClient = { name: string; logo?: string; link?: string }
 
 const programYears: {
-  label: string
   years: string
   description: string
   clients: ProgramClient[]
 }[] = [
   {
-    label: '1st Year',
-    years: '2022–23',
-    description:
-      'Four founding client cities began a partnership designed to turn student research into practical economic development strategies.',
-    clients: [
-      { name: 'City of Garden Grove', logo: '/usc-challenge/city-of-garden-grove.png' },
-      { name: 'City of Irvine', logo: '/usc-challenge/city-of-irvine.svg' },
-      { name: 'City of Long Beach', logo: '/usc-challenge/city-of-long-beach.jpg' },
-      { name: 'City of El Segundo', logo: '/usc-challenge/city-of-el-segundo.png' },
-    ],
-  },
-  {
-    label: '2nd Year',
-    years: '2023–24',
-    description:
-      'The Challenge expanded to five cities, extending its impact across community and economic development priorities.',
-    clients: [
-      { name: 'City of San Bernardino', logo: '/usc-challenge/city-of-san-bernardino.jpg' },
-      { name: 'City of Pasadena', logo: '/usc-challenge/city-of-pasadena.jpg' },
-      { name: 'City of Torrance', logo: '/usc-challenge/city-of-torrance.png' },
-      { name: 'City of Culver City', logo: '/usc-challenge/city-of-culver-city.png' },
-      { name: 'City of Lomita', logo: '/usc-challenge/city-of-lomita.png' },
-    ],
-  },
-  {
-    label: '3rd Year',
-    years: '2024–25',
-    description:
-      'Participation reached Northern California and rural communities, broadening the program’s geographic and economic development perspective.',
-    clients: [
-      { name: 'City of Carson', logo: '/usc-challenge/city-of-carson-updated-seal.png' },
-      { name: 'City of Glendora', logo: '/usc-challenge/city-of-glendora.png' },
-      { name: 'Nevada City', logo: '/usc-challenge/nevada-city.png' },
-      { name: 'City of Cypress', logo: '/usc-challenge/city-of-cypress.png' },
-      { name: 'City of Santa Clarita', logo: '/usc-challenge/city-of-santa-clarita.png' },
-    ],
-  },
-  {
-    label: '4th Year',
     years: '2025–26',
     description:
       'The Challenge welcomed its first county client and featured its first all-women panel of judges, highlighting diverse leadership in public service.',
@@ -133,26 +96,123 @@ const programYears: {
       {
         name: 'San Bernardino County',
         logo: '/usc-challenge/county-of-san-bernardino.webp',
+        link: 'https://selectsbcounty.com/',
       },
       {
         name: 'City of West Covina',
         logo: '/usc-challenge/city-of-west-covina.png',
+        link: 'https://www.westcovina.gov/204/Economic-Development',
       },
       {
         name: 'City of Sutter Creek',
         logo: '/usc-challenge/city-of-sutter-creek.png',
+        link: 'https://www.cityofsuttercreek.org/',
       },
       {
         name: 'City of Lake Elsinore',
         logo: '/usc-challenge/city-of-lake-elsinore.webp',
+        link: 'https://lakeelsinorebusiness.com/',
       },
       {
         name: 'City of Mission Viejo',
         logo: '/usc-challenge/city-of-mission-viejo.svg',
+        link: 'https://www.missionviejo.gov/departments/economic-development',
       },
       {
         name: 'City of Riverside',
         logo: '/usc-challenge/city-of-riverside.png',
+        link: 'https://riversideca.gov/cedd/economic-development',
+      },
+    ],
+  },
+  {
+    years: '2024–25',
+    description:
+      'Participation reached Northern California and rural communities, broadening the program’s geographic and economic development perspective.',
+    clients: [
+      {
+        name: 'City of Carson',
+        logo: '/usc-challenge/city-of-carson.jpg',
+        link: 'https://carsonca.gov/services/community___economic_development/economic_development',
+      },
+      {
+        name: 'City of Glendora',
+        logo: '/usc-challenge/city-of-glendora.png',
+        link: 'https://www.cityofglendora.gov/Explore/Economic-Development',
+      },
+      {
+        name: 'Nevada City',
+        logo: '/usc-challenge/nevada-city.png',
+        link: 'https://www.nevadacityca.gov/',
+      },
+      {
+        name: 'City of Cypress',
+        logo: '/usc-challenge/city-of-cypress.png',
+        link: 'https://www.cypressca.org/departments/community-development/economic-development-911',
+      },
+      {
+        name: 'City of Santa Clarita',
+        logo: '/usc-challenge/city-of-santa-clarita.png',
+        link: 'https://econdev.santaclarita.gov/',
+      },
+    ],
+  },
+  {
+    years: '2023–24',
+    description:
+      'The Challenge expanded to five cities, extending its impact across community and economic development priorities.',
+    clients: [
+      {
+        name: 'City of San Bernardino',
+        logo: '/usc-challenge/city-of-san-bernardino-clean.png',
+        link: 'https://www.sanbernardino.gov/206/Economic-Development',
+      },
+      {
+        name: 'City of Pasadena',
+        logo: '/usc-challenge/city-of-pasadena.jpg',
+        link: 'https://www.cityofpasadena.net/economicdevelopment/',
+      },
+      {
+        name: 'City of Torrance',
+        logo: '/usc-challenge/city-of-torrance.png',
+        link: 'https://business.torranceca.gov/our-city/economic-development/economic-development-team',
+      },
+      {
+        name: 'City of Culver City',
+        logo: '/usc-challenge/city-of-culver-city.png',
+        link: 'https://www.culvercity.gov/City-Hall/City-Departments/Economic-and-Cultural-Development/Economic-Development',
+      },
+      {
+        name: 'City of Lomita',
+        logo: '/usc-challenge/city-of-lomita.png',
+        link: 'https://lomitacity.com/community-economic-development/',
+      },
+    ],
+  },
+  {
+    years: '2022–23',
+    description:
+      'Four founding client cities began a partnership designed to turn student research into practical economic development strategies.',
+    clients: [
+      {
+        name: 'City of Garden Grove',
+        logo: '/usc-challenge/city-of-garden-grove.png',
+        link: 'https://ggcity.org/econdev',
+      },
+      {
+        name: 'City of Irvine',
+        logo: '/usc-challenge/city-of-irvine.svg',
+        link: 'https://cityofirvine.gov/economic-development',
+      },
+      {
+        name: 'City of Long Beach',
+        logo: '/usc-challenge/city-of-long-beach.jpg',
+        link: 'https://www.longbeach.gov/edo/',
+      },
+      {
+        name: 'City of El Segundo',
+        logo: '/usc-challenge/city-of-el-segundo.png',
+        link: 'https://www.elsegundobusiness.com/',
       },
     ],
   },
@@ -191,24 +251,6 @@ const relatedPrograms = [
 
 const eventAlbumPhotos: EventAlbumPhoto[] = [
   {
-    id: '1st-final-pitch',
-    caption: '1st Sunstone Challenge Final Pitch',
-    image: '/events-gallery/1st-sunstone-challenge-final-pitch.jpg',
-    href: 'https://www.flickr.com/photos/uscsppd/albums/72177720307859492/',
-  },
-  {
-    id: '2nd-final-pitch',
-    caption: '2nd Sunstone Challenge Final Pitch',
-    image: '/events-gallery/2nd-sunstone-challenge-final-pitch.jpg',
-    href: 'https://www.flickr.com/photos/uscsppd/albums/72177720316163248/',
-  },
-  {
-    id: '3rd-final-pitch',
-    caption: '3rd Sunstone Challenge Final Pitch',
-    image: '/events-gallery/3rd-sunstone-challenge-final-pitch.jpg',
-    href: 'https://www.flickr.com/photos/uscsppd/albums/72177720325266996/',
-  },
-  {
     id: '4th-student-mixer',
     caption: '4th Sunstone Challenge Student Mixer',
     image: '/events-gallery/4th-sunstone-challenge-student-mixer.jpg',
@@ -220,11 +262,29 @@ const eventAlbumPhotos: EventAlbumPhoto[] = [
     image: '/events-gallery/4th-sunstone-challenge-final-pitch.jpg',
     href: 'https://www.flickr.com/photos/uscsppd/albums/72177720333388205',
   },
+  {
+    id: '3rd-final-pitch',
+    caption: '3rd Sunstone Challenge Final Pitch',
+    image: '/events-gallery/3rd-sunstone-challenge-final-pitch.jpg',
+    href: 'https://www.flickr.com/photos/uscsppd/albums/72177720325266996/',
+  },
+  {
+    id: '2nd-final-pitch',
+    caption: '2nd Sunstone Challenge Final Pitch',
+    image: '/events-gallery/2nd-sunstone-challenge-final-pitch.jpg',
+    href: 'https://www.flickr.com/photos/uscsppd/albums/72177720316163248/',
+  },
+  {
+    id: '1st-final-pitch',
+    caption: '1st Sunstone Challenge Final Pitch',
+    image: '/events-gallery/1st-sunstone-challenge-final-pitch.jpg',
+    href: 'https://www.flickr.com/photos/uscsppd/albums/72177720307859492/',
+  },
 ]
 
 export default function UscPricePartnershipPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+    <main id="main-content" tabIndex={-1} className="min-h-screen overflow-hidden bg-background text-foreground">
       <SiteHeader darkTop />
 
       <section className="relative isolate flex min-h-[720px] items-end overflow-hidden bg-[#0F3A63] pb-20 pt-36 text-white sm:pb-24 sm:pt-44 lg:min-h-[780px] lg:pb-28">
@@ -268,9 +328,11 @@ export default function UscPricePartnershipPage() {
               <p className="mt-8 max-w-3xl text-pretty text-base leading-[1.8] text-white/82 sm:text-lg">
                 The Sunstone Economic Development Challenge @ USC Price is a
                 partnership between the USC Price City/County Management
-                Fellowship Program, USC Price School of Public Policy, and
-                Sunstone. The Challenge is supported by a five-year grant from
-                the Sunstone Community Fund.
+                Fellowship (CMF) Program, the USC Price School of Public
+                Policy, and Sunstone Cities. Sunstone Cities serves as the
+                Challenge’s economic development partner, while the Sunstone
+                Community Fund (SCF) supports the initiative through a
+                five-year grant.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
@@ -278,7 +340,7 @@ export default function UscPricePartnershipPage() {
                 <a
                   href="https://sites.usc.edu/sunstone-price-challenge/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="shine group inline-flex items-center gap-2.5 rounded-full bg-primary px-8 py-4 text-base font-bold text-white shadow-[0_18px_42px_-14px_rgba(70,127,247,0.9)] transition-all hover:-translate-y-0.5 hover:bg-primary-dark"
                 >
                   Learn more
@@ -365,7 +427,7 @@ export default function UscPricePartnershipPage() {
                     <a
                       href={item.href}
                       target={item.external ? '_blank' : undefined}
-                      rel={item.external ? 'noreferrer' : undefined}
+                      rel={item.external ? 'noopener noreferrer' : undefined}
                       className="group/link mt-7 inline-flex w-fit items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                     >
                       {item.action}
@@ -398,14 +460,11 @@ export default function UscPricePartnershipPage() {
           </Reveal>
 
           <div className="mt-14 space-y-4">
-            {[...programYears].reverse().map((year, index) => (
+            {programYears.map((year, index) => (
               <Reveal key={year.years} delay={index * 0.04}>
                 <article className="grid gap-8 rounded-2xl border border-border bg-muted p-7 transition-colors duration-500 hover:bg-white sm:p-9 lg:grid-cols-[0.35fr_0.65fr] lg:gap-14">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                      {year.label}
-                    </p>
-                    <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-foreground">
+                    <h3 className="font-display text-3xl font-semibold tracking-tight text-foreground">
                       {year.years}
                     </h3>
                     <p className="mt-5 max-w-md text-sm leading-7 text-muted-foreground sm:text-base">
@@ -420,9 +479,9 @@ export default function UscPricePartnershipPage() {
                       className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3"
                       staggerChildren={0.05}
                     >
-                      {year.clients.map((client) => (
-                        <StaggerItem key={client.name}>
-                          <div className="group flex h-32 items-center justify-center rounded-2xl border border-border bg-white p-4 shadow-[0_20px_42px_-30px_rgba(15,58,99,0.35)] transition-transform duration-500 hover:-translate-y-1 sm:h-36">
+                      {year.clients.map((client) => {
+                        const logoTile = (
+                          <div className="flex h-32 items-center justify-center rounded-2xl border border-border bg-white p-4 shadow-[0_20px_42px_-30px_rgba(15,58,99,0.35)] transition-transform duration-500 group-hover:-translate-y-1 sm:h-36">
                             {client.logo ? (
                               <div className="relative h-16 w-full sm:h-20">
                                 <Image
@@ -440,11 +499,34 @@ export default function UscPricePartnershipPage() {
                               </div>
                             )}
                           </div>
-                          <p className="mt-3 text-center text-xs font-medium leading-5 text-muted-foreground">
-                            {client.name}
-                          </p>
-                        </StaggerItem>
-                      ))}
+                        )
+
+                        return (
+                          <StaggerItem key={client.name}>
+                            {client.link ? (
+                              <a
+                                href={client.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Visit ${client.name}'s economic development website`}
+                                className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                              >
+                                {logoTile}
+                                <p className="mt-3 text-center text-xs font-medium leading-5 text-muted-foreground transition-colors group-hover:text-primary">
+                                  {client.name}
+                                </p>
+                              </a>
+                            ) : (
+                              <div className="group">
+                                {logoTile}
+                                <p className="mt-3 text-center text-xs font-medium leading-5 text-muted-foreground">
+                                  {client.name}
+                                </p>
+                              </div>
+                            )}
+                          </StaggerItem>
+                        )
+                      })}
                     </Stagger>
                   </div>
                 </article>
@@ -489,7 +571,7 @@ export default function UscPricePartnershipPage() {
                   <a
                     href={program.href}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="group flex h-full flex-col rounded-2xl border border-border bg-[#f6f8fd] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-primary/35 hover:bg-white hover:shadow-[0_22px_55px_-38px_rgba(15,58,99,0.5)] sm:p-8"
                   >
                     <div className="flex items-start justify-between gap-6">

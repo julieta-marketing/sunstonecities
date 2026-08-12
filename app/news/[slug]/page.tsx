@@ -12,9 +12,45 @@ import { cn } from '@/lib/utils'
 const articleCardClass =
   'rounded-lg border border-border bg-card px-5 py-8 shadow-[0_24px_70px_-56px_rgba(15,58,99,0.45)] sm:px-8 lg:px-10'
 const articleListItemClass = 'flex gap-3 text-base leading-relaxed text-muted-foreground'
+const inlineLinkClass = 'font-medium text-primary underline-offset-4 hover:underline'
+const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g
 
 type NewsArticlePageProps = {
   params: Promise<{ slug: string }>
+}
+
+function renderInlineLinks(text: string) {
+  const parts = []
+  let lastIndex = 0
+
+  for (const match of text.matchAll(markdownLinkPattern)) {
+    const [raw, label, href] = match
+    const index = match.index ?? 0
+
+    if (index > lastIndex) {
+      parts.push(text.slice(lastIndex, index))
+    }
+
+    parts.push(
+      <a
+        key={`${href}-${index}`}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={inlineLinkClass}
+      >
+        {label}
+      </a>,
+    )
+
+    lastIndex = index + raw.length
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex))
+  }
+
+  return parts.length ? parts : text
 }
 
 export function generateStaticParams() {
@@ -135,7 +171,7 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
                           key={paragraph}
                           className="text-base leading-[1.75] text-muted-foreground sm:text-[1.05rem]"
                         >
-                          {paragraph}
+                          {renderInlineLinks(paragraph)}
                         </p>
                       ))}
 
@@ -144,7 +180,7 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
                           {section.bullets.map((bullet) => (
                             <li key={bullet} className={articleListItemClass}>
                               <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-                              <span>{bullet}</span>
+                              <span>{renderInlineLinks(bullet)}</span>
                             </li>
                           ))}
                         </ul>
@@ -227,7 +263,7 @@ function InfoPanel({
         {items.map((item) => (
           <li key={item} className={articleListItemClass}>
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span className="break-words">{item}</span>
+            <span className="break-words">{renderInlineLinks(item)}</span>
           </li>
         ))}
       </ul>

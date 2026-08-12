@@ -24,7 +24,7 @@ export function Hero() {
     <section
       id="top"
       ref={ref}
-      className="grain relative flex min-h-[67svh] flex-col justify-end overflow-hidden"
+      className="grain relative flex min-h-[67svh] flex-col justify-start overflow-hidden sm:justify-end"
     >
       {/* Parallax background */}
       <motion.div
@@ -62,7 +62,7 @@ export function Hero() {
       {/* Content */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-14 sm:px-8"
+        className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-14 pt-[calc(env(safe-area-inset-top)+7.25rem)] sm:px-8 sm:pt-0"
       >
         <h1 className="max-w-5xl font-display text-4xl font-bold leading-[1.02] tracking-tight text-balance text-[#1c244b] sm:text-6xl lg:text-7xl">
           <KineticHeading text="Enriching communities" animateOnMount delay={0.3} />

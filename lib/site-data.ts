@@ -13,6 +13,7 @@ export interface EventItem {
   title: string
   date: string
   time: string
+  timeZone?: 'PT'
   location: string
   excerpt: string
   image: string
@@ -223,7 +224,8 @@ export const events: EventItem[] = [
     title:
       '2026-27 Sunstone Economic Development Challenge @ USC Price - Client City Info Session',
     date: 'Friday, August 14, 2026',
-    time: '3:00 PM – 3:30 PM ET',
+    time: '12:00 PM – 12:30 PM PT',
+    timeZone: 'PT',
     location: 'Zoom',
     excerpt:
       'A virtual information session for cities interested in participating in the fifth annual Sunstone Economic Development Challenge at USC Price.',
@@ -329,7 +331,7 @@ export const team: TeamMember[] = [
     zoom: 1,
     linkedin: 'https://www.linkedin.com/in/jade-le-6401431a2/',
     email: 'Jade.Le@Sunstonecities.com',
-    bio: 'Jade Le holds a Master of Public Policy from UC Riverside and specializes in public-private partnerships, bringing capital to infrastructure development projects.',
+    bio: 'Jade Le holds a Master of Public Policy from the University of California, Riverside, with a concentration in business and environmental policy, and brings experience leading public- and private-sector initiatives to Sunstone Cities’ Project Financing team, where she will coordinate public infrastructure projects and private financing transactions from initial opportunity through financial close.',
   },
 ]
 
@@ -811,37 +813,64 @@ export const featuredFinancingCaseStudies: FeaturedCaseStudy[] = [
   },
 ]
 
-export const faqs: { q: string; a: string }[] = [
+export type FaqAnswerPart = string | { label: string; href: string }
+
+export const faqs: { q: string; a: FaqAnswerPart[] }[] = [
   {
     q: 'What types of clients does Sunstone Cities work with?',
-    a: 'We partner primarily with cities, counties, special districts, and public authorities, as well as the economic development organizations and quasi-public entities that support them.',
+    a: [
+      'We partner primarily with cities, counties, special districts, and public authorities, as well as the economic development organizations and quasi-public entities that support them.',
+    ],
   },
   {
     q: 'How is Sunstone Cities different from a traditional consulting firm?',
-    a: 'We combine economic development strategy with hands-on project financing expertise. That means we do not just recommend a plan — we help structure the capital and partnerships needed to deliver it.',
+    a: [
+      'We combine economic development strategy with hands-on project financing expertise. We do more than recommend a plan. We help structure the capital and partnerships needed to deliver it.',
+    ],
+  },
+  {
+    q: 'How is Sunstone Cities related to Sunstone Investment Group?',
+    a: [
+      'Sunstone Cities is the public-sector arm of the ',
+      { label: 'Sunstone Investment Group', href: 'http://sunstoneinvestment.com' },
+      '. For more about our partnership with Fullerton Consulting, visit ',
+      { label: 'P3 LLC.', href: 'https://www.publicprivatepartnersllc.com/' },
+    ],
   },
   {
     q: 'Do you help with both strategy and financing, or just one?',
-    a: 'Both. Many clients engage us for strategy first and financing later, but our teams work together so the financial structure and the development strategy reinforce each other from day one.',
+    a: [
+      'Both. Many clients engage us for strategy first and financing later, but our teams work together so the financial structure and the development strategy reinforce each other from day one.',
+    ],
   },
   {
     q: 'What is a public-private partnership (P3), and when does it make sense?',
-    a: 'A P3 is a long-term agreement where a private partner helps finance, build, or operate a public asset. It can make sense when a project needs capital, specialized delivery, or risk transfer that the public sector cannot easily provide alone.',
+    a: [
+      'A P3 is a long-term agreement where a private partner helps finance, build, or operate a public asset. It can make sense when a project needs capital, specialized delivery, or risk transfer that the public sector cannot easily provide alone.',
+    ],
   },
   {
     q: 'How long does a typical engagement last?',
-    a: 'Engagements range from focused several-week studies to multi-year advisory relationships that span a full project lifecycle. We scope each engagement to the outcome you need.',
+    a: [
+      'Engagements range from focused several-week studies to multi-year advisory relationships that span a full project lifecycle. We scope each engagement to the outcome you need.',
+    ],
   },
   {
     q: 'Can you augment our existing staff rather than replace them?',
-    a: 'Yes. Our staff augmentation practice embeds senior advisors directly into your team to add capacity and expertise without adding permanent headcount.',
+    a: [
+      'Yes. Our staff augmentation practice embeds senior advisors directly into your team to add capacity and expertise without adding permanent headcount.',
+    ],
   },
   {
     q: 'What size projects do you take on?',
-    a: 'We work across a wide range of project sizes, from targeted community initiatives to programs exceeding $200M. What matters most is a committed public partner and a project that strengthens the community.',
+    a: [
+      'We work across a wide range of project sizes, from targeted community initiatives to programs exceeding $200M. What matters most is a committed public partner and a project that strengthens the community.',
+    ],
   },
   {
     q: 'How do we start a conversation with your team?',
-    a: 'Use the contact form on this page or email our team directly. We will follow up to learn about your goals and outline how we can help move your project forward.',
+    a: [
+      'Use the contact form on this page or email our team directly. We will follow up to learn about your goals and outline how we can help move your project forward.',
+    ],
   },
 ]

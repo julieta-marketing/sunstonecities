@@ -111,48 +111,6 @@ export function UscSunstoneChallenge() {
             </Stagger>
           </div>
         </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="mt-8 flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>
-              Follow the City/County Management Fellowship for Challenge
-              updates.
-            </p>
-            <a
-              href="https://www.instagram.com/usccmf/"
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex w-fit items-center gap-2 font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-[#e7edf5]"
-            >
-              <svg
-                aria-hidden="true"
-                className="size-4"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <rect
-                  height="17"
-                  rx="5"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  width="17"
-                  x="3.5"
-                  y="3.5"
-                />
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="3.6"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                />
-                <circle cx="17.35" cy="6.7" fill="currentColor" r="1" />
-              </svg>
-              @usccmf
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   )

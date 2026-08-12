@@ -3,7 +3,25 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Plus } from 'lucide-react'
-import { faqs } from '@/lib/site-data'
+import { faqs, type FaqAnswerPart } from '@/lib/site-data'
+
+function renderAnswer(parts: FaqAnswerPart[]) {
+  return parts.map((part, index) => {
+    if (typeof part === 'string') return part
+
+    return (
+      <a
+        key={`${part.href}-${index}`}
+        href={part.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-primary underline-offset-4 hover:underline"
+      >
+        {part.label}
+      </a>
+    )
+  })
+}
 
 export function FaqAccordion() {
   const [open, setOpen] = useState<number | null>(0)
@@ -57,7 +75,7 @@ export function FaqAccordion() {
                       className="overflow-hidden"
                     >
                       <p className="px-5 pb-5 leading-relaxed text-muted-foreground sm:px-6">
-                        {faq.a}
+                        {renderAnswer(faq.a)}
                       </p>
                     </motion.div>
                   ) : null}

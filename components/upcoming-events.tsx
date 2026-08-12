@@ -53,9 +53,6 @@ export function UpcomingEvents() {
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                     Upcoming Event
                   </p>
-                  <span className="rounded-full bg-[#e7f1fb] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1D6EAF]">
-                    Infrastructure leadership
-                  </span>
                 </div>
 
                 <h2 className="mt-5 max-w-xl text-balance font-display text-2xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-3xl">
@@ -119,9 +116,6 @@ export function UpcomingEvents() {
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                     Latest Video
                   </p>
-                  <span className="rounded-full bg-[#e7f1fb] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1D6EAF]">
-                    Field Notes
-                  </span>
                 </div>
 
                 <h2 className="mt-5 max-w-xl text-balance font-display text-3xl font-semibold leading-[1.12] tracking-tight text-foreground sm:text-4xl">

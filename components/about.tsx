@@ -17,8 +17,8 @@ const aboutColumns = [
       'unlock growth, attract businesses & investment',
       'create resilient communities',
     ],
-    image: '/about/our-mission.jpg',
-    alt: 'Sunstone Cities community and civic leaders in conversation at an event',
+    image: '/about/our-mission-community-event.jpg',
+    alt: 'Sunstone Cities community leaders gathered at an outdoor event',
   },
   {
     title: 'Why Cities Choose Us',

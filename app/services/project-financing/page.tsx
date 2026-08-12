@@ -20,10 +20,11 @@ export const metadata: Metadata = {
 }
 
 const onePagers = {
-  pifs: '/one-pagers/public-infrastructure-financing-solutions-pifs.pdf',
   bridgeToBond: '/one-pagers/bridge-to-bond.pdf',
-  growthCapital: '/one-pagers/growth-capital.pdf',
 }
+
+const financingDisclaimer =
+  'Sunstone Cities partners with a network of trusted non-bank private capital providers to connect clients with flexible financing solutions tailored to their project and investment needs. Financing options are offered through independent capital partners and are subject to underwriting, approval, and applicable terms and conditions.'
 
 const pifsDeliverables = [
   'Capital stack design and feasibility analysis',
@@ -54,7 +55,7 @@ const loanTypes = [
   'USDA Financing',
   'Infrastructure Financing',
   'PACE Financing',
-  'EB-5 Capital',
+  'FDI',
 ]
 
 const constructionProjectTypes = [
@@ -219,13 +220,11 @@ export default function ProjectFinancingPage() {
                   </ul>
 
                   <a
-                    href={onePagers.pifs}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#start-a-conversation"
                     className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                   >
-                    <FileDown className="size-4" />
-                    View 1-pager
+                    Contact us
+                    <ArrowUpRight className="size-4" />
                   </a>
                 </div>
               </Reveal>
@@ -334,26 +333,18 @@ export default function ProjectFinancingPage() {
                   </div>
 
                   <a
-                    href={onePagers.growthCapital}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#start-a-conversation"
                     className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                   >
-                    <FileDown className="size-4" />
-                    View 1-pager
+                    Contact us
+                    <ArrowUpRight className="size-4" />
                   </a>
                 </div>
               </Reveal>
 
               <div className="mt-10 border-l-2 border-primary/40 bg-[#f4f7fa] px-5 py-4 sm:px-6">
                 <p className="text-xs leading-relaxed text-muted-foreground">
-                  Sunstone Cities partners with a network of trusted non-bank
-                  private capital providers to connect clients with flexible
-                  financing solutions tailored to their project and
-                  investment needs. Financing options are offered through
-                  independent capital partners and are subject to
-                  underwriting, approval, and applicable terms and
-                  conditions.
+                  {financingDisclaimer}
                 </p>
               </div>
             </div>
@@ -436,10 +427,16 @@ export default function ProjectFinancingPage() {
               caseStudies={caseStudies}
               ariaLabel="Project Financing case studies"
             />
+
+            <div className="mt-10 border-l-2 border-primary/40 bg-[#f4f7fa] px-5 py-4 sm:px-6">
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                {financingDisclaimer}
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="py-20 sm:py-24">
+        <section id="start-a-conversation" className="scroll-mt-28 py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="overflow-hidden rounded-2xl bg-[#0F3A63] px-6 py-12 text-white sm:px-12 sm:py-14">
               <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">

@@ -142,7 +142,7 @@ const programYears: {
       },
       {
         name: 'Nevada City',
-        logo: '/usc-challenge/nevada-city.png',
+        logo: '/usc-challenge/nevada-city-seal.png',
         link: 'https://www.nevadacityca.gov/',
       },
       {
@@ -483,7 +483,7 @@ export default function UscPricePartnershipPage() {
                         const logoTile = (
                           <div className="flex h-32 items-center justify-center rounded-2xl border border-border bg-white p-4 shadow-[0_20px_42px_-30px_rgba(15,58,99,0.35)] transition-transform duration-500 group-hover:-translate-y-1 sm:h-36">
                             {client.logo ? (
-                              <div className="relative h-16 w-full sm:h-20">
+                              <div className="relative h-16 w-32 sm:h-20 sm:w-40">
                                 <Image
                                   src={client.logo}
                                   alt={`${client.name} logo`}
@@ -591,6 +591,48 @@ export default function UscPricePartnershipPage() {
               )
             })}
           </Stagger>
+
+          <Reveal delay={0.12}>
+            <div className="mt-10 flex flex-col gap-3 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+              <p>
+                Follow the City/County Management Fellowship for Challenge
+                updates.
+              </p>
+              <a
+                href="https://www.instagram.com/usccmf/"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex w-fit items-center gap-2 font-semibold text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="size-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <rect
+                    height="17"
+                    rx="5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    width="17"
+                    x="3.5"
+                    y="3.5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3.6"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
+                  <circle cx="17.35" cy="6.7" fill="currentColor" r="1" />
+                </svg>
+                @usccmf
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 

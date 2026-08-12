@@ -263,13 +263,11 @@ export default function ProjectConsultingPage() {
                         </a>
                       ) : (
                         <a
-                          href={`mailto:contact@sunstonecities.com?subject=${encodeURIComponent(
-                            `${service.title} 1-pager`,
-                          )}`}
+                          href="#start-a-conversation"
                           className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                         >
-                          <FileDown className="size-4" />
-                          Access 1-pager
+                          Contact us
+                          <ArrowUpRight className="size-4" />
                         </a>
                       )}
                     </div>
@@ -305,7 +303,7 @@ export default function ProjectConsultingPage() {
           </div>
         </section>
 
-        <section className="py-20 sm:py-24">
+        <section id="start-a-conversation" className="scroll-mt-28 py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="overflow-hidden rounded-2xl bg-[#0F3A63] px-6 py-12 text-white sm:px-12 sm:py-14">
               <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">

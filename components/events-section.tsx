@@ -78,7 +78,7 @@ export function EventsSection() {
         <SectionHeading
           title="Sunstone Moments That Mattered"
           highlight="Sunstone Moments"
-          titleClassName="max-w-none whitespace-nowrap text-white"
+          titleClassName="max-w-none text-white lg:whitespace-nowrap"
         />
       </div>
 

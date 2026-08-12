@@ -179,19 +179,16 @@ export default function ProjectConsultingPage() {
               Back to services
             </Link>
 
-            <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.48fr] lg:items-end">
+            <div className="mt-12">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
+                <h1 className="max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
                   Project Consulting Services
-                </p>
-                <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
-                  Strategic capacity for projects that need to move.
                 </h1>
+                <p className="mt-6 max-w-none text-lg leading-relaxed text-muted-foreground md:whitespace-nowrap">
+                  Strategic expertise and hands-on support to strengthen capacity
+                  and drive results.
+                </p>
               </div>
-              <p className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-                Strategic expertise and hands-on support to strengthen capacity
-                and drive results.
-              </p>
             </div>
           </div>
         </section>
@@ -263,7 +260,7 @@ export default function ProjectConsultingPage() {
                         </a>
                       ) : (
                         <a
-                          href="#start-a-conversation"
+                          href="/#start-a-conversation"
                           className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                         >
                           Contact us

@@ -159,19 +159,16 @@ export default function ProjectFinancingPage() {
               Back to services
             </Link>
 
-            <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.48fr] lg:items-end">
+            <div className="mt-12">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-primary">
+                <h1 className="max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
                   Project Financing
-                </p>
-                <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
-                  Capital that turns essential projects into reality.
                 </h1>
+                <p className="mt-6 max-w-none text-lg leading-relaxed text-muted-foreground md:whitespace-nowrap">
+                  Innovative financing solutions to fund infrastructure and
+                  economic development projects.
+                </p>
               </div>
-              <p className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-                Innovative financing solutions to fund infrastructure and
-                economic development projects.
-              </p>
             </div>
           </div>
         </section>
@@ -220,7 +217,7 @@ export default function ProjectFinancingPage() {
                   </ul>
 
                   <a
-                    href="#start-a-conversation"
+                    href="/#start-a-conversation"
                     className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                   >
                     Contact us
@@ -333,7 +330,7 @@ export default function ProjectFinancingPage() {
                   </div>
 
                   <a
-                    href="#start-a-conversation"
+                    href="/#start-a-conversation"
                     className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-primary-dark"
                   >
                     Contact us

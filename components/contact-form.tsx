@@ -51,6 +51,7 @@ export function ContactForm() {
 
   return (
     <section id="contact" className="relative overflow-hidden bg-[#f4f7fb] py-24 md:py-36">
+      <span id="start-a-conversation" className="absolute -top-24" aria-hidden="true" />
       <div
         aria-hidden="true"
         className="bg-dots pointer-events-none absolute inset-0 opacity-[0.1] [mask-image:linear-gradient(90deg,black,transparent_60%)]"

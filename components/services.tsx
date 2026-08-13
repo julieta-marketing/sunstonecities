@@ -12,9 +12,9 @@ import { SectionHeading } from '@/components/section-heading'
 import { CaseStudyAccordion } from '@/components/case-study-accordion'
 import { Reveal } from '@/components/motion/primitives'
 import {
-  featuredConsultingCaseStudies,
-  featuredFinancingCaseStudies,
-} from '@/lib/site-data'
+  getFeaturedProjectConsultingCaseStudies,
+  getFeaturedProjectFinancingCaseStudies,
+} from '@/lib/case-studies'
 
 const consultingServices = [
   { title: 'Staff Augmentation', icon: UsersRound },
@@ -32,7 +32,9 @@ const financingServices = [
 ]
 
 export function Services() {
-  const visibleConsultingCaseStudies = featuredConsultingCaseStudies.slice(0, 3)
+  const visibleConsultingCaseStudies =
+    getFeaturedProjectConsultingCaseStudies(3)
+  const visibleFinancingCaseStudies = getFeaturedProjectFinancingCaseStudies(3)
 
   return (
     <section
@@ -160,7 +162,7 @@ export function Services() {
         <div className="mt-10 sm:mt-12">
           <Reveal delay={0.05}>
             <div>
-              <CaseStudyAccordion caseStudies={featuredFinancingCaseStudies} />
+              <CaseStudyAccordion caseStudies={visibleFinancingCaseStudies} />
             </div>
           </Reveal>
         </div>

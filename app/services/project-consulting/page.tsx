@@ -12,6 +12,7 @@ import { Reveal } from '@/components/motion/primitives'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { CaseStudyCarousel } from '@/components/case-study-carousel'
+import { getProjectConsultingSlides } from '@/lib/case-studies'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -163,6 +164,8 @@ const caseStudies = [
 ]
 
 export default function ProjectConsultingPage() {
+  const contentCaseStudies = getProjectConsultingSlides()
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -294,7 +297,7 @@ export default function ProjectConsultingPage() {
             </div>
 
             <CaseStudyCarousel
-              caseStudies={caseStudies}
+              caseStudies={contentCaseStudies}
               ariaLabel="Project Consulting Services case studies"
             />
           </div>

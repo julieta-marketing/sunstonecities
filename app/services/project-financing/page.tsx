@@ -12,6 +12,7 @@ import { Reveal } from '@/components/motion/primitives'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { CaseStudyCarousel } from '@/components/case-study-carousel'
+import { getProjectFinancingSlides } from '@/lib/case-studies'
 
 export const metadata: Metadata = {
   title: 'Project Financing | Sunstone Cities',
@@ -143,6 +144,8 @@ const caseStudies = [
 ]
 
 export default function ProjectFinancingPage() {
+  const contentCaseStudies = getProjectFinancingSlides()
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -421,7 +424,7 @@ export default function ProjectFinancingPage() {
             </div>
 
             <CaseStudyCarousel
-              caseStudies={caseStudies}
+              caseStudies={contentCaseStudies}
               ariaLabel="Project Financing case studies"
             />
 

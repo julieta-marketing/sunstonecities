@@ -166,6 +166,19 @@ export function TeamCarousel({
     return () => scroller.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (!scroller) return
+
+    const blockVerticalWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
+      event.preventDefault()
+    }
+
+    scroller.addEventListener('wheel', blockVerticalWheel, { passive: false })
+    return () => scroller.removeEventListener('wheel', blockVerticalWheel)
+  }, [])
+
   const scrollTo = (index: number) => {
     const scroller = scrollerRef.current
     if (!scroller) return
@@ -181,7 +194,7 @@ export function TeamCarousel({
     <div className="mt-12">
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex touch-pan-x snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {members.map((member) => (
           <div

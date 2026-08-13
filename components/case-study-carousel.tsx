@@ -43,13 +43,18 @@ export function CaseStudyCarousel({
   const [activeIndex, setActiveIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
 
+  const getSlideScrollLeft = (
+    track: HTMLDivElement,
+    slide: HTMLElement,
+  ) => slide.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft
+
   const scrollToIndex = useCallback(
     (index: number, behavior: ScrollBehavior = 'smooth') => {
       const track = trackRef.current
       const slide = slideRefs.current[index]
       if (!track || !slide) return
 
-      track.scrollTo({ left: slide.offsetLeft, behavior })
+      track.scrollTo({ left: getSlideScrollLeft(track, slide), behavior })
       setActiveIndex(index)
     },
     [],
@@ -63,14 +68,16 @@ export function CaseStudyCarousel({
 
     if (requestedIndex < 0) return undefined
 
-    const animationFrame = window.requestAnimationFrame(() => {
-      scrollToIndex(requestedIndex, 'auto')
-      document
-        .getElementById('case-studies')
-        ?.scrollIntoView({ behavior: 'auto', block: 'start' })
-    })
+    const timeouts = [0, 80, 180].map((delay) =>
+      window.setTimeout(() => {
+        scrollToIndex(requestedIndex, 'auto')
+        document
+          .getElementById('case-studies')
+          ?.scrollIntoView({ behavior: 'auto', block: 'start' })
+      }, delay),
+    )
 
-    return () => window.cancelAnimationFrame(animationFrame)
+    return () => timeouts.forEach((timeout) => window.clearTimeout(timeout))
   }, [caseStudies, scrollToIndex])
 
   useEffect(() => {
@@ -98,7 +105,7 @@ export function CaseStudyCarousel({
 
     slideRefs.current.forEach((slide, index) => {
       if (!slide) return
-      const distance = Math.abs(slide.offsetLeft - track.scrollLeft)
+      const distance = Math.abs(getSlideScrollLeft(track, slide) - track.scrollLeft)
       if (distance < nearestDistance) {
         nearestDistance = distance
         nearestIndex = index
@@ -173,7 +180,7 @@ export function CaseStudyCarousel({
       let nearestDistance = Number.POSITIVE_INFINITY
       slideRefs.current.forEach((slide, index) => {
         if (!slide) return
-        const distance = Math.abs(slide.offsetLeft - track.scrollLeft)
+        const distance = Math.abs(getSlideScrollLeft(track, slide) - track.scrollLeft)
         if (distance < nearestDistance) {
           nearestDistance = distance
           nearestIndex = index

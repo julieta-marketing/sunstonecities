@@ -55,13 +55,13 @@ export function CaseStudyCarousel({
     [],
   )
 
-  useEffect(() => {
+  const syncToHash = useCallback(() => {
     const hash = window.location.hash.slice(1)
     const requestedIndex = caseStudies.findIndex(
       (study) => `case-${study.id}` === hash,
     )
 
-    if (requestedIndex < 0) return
+    if (requestedIndex < 0) return undefined
 
     const animationFrame = window.requestAnimationFrame(() => {
       scrollToIndex(requestedIndex, 'auto')
@@ -72,6 +72,22 @@ export function CaseStudyCarousel({
 
     return () => window.cancelAnimationFrame(animationFrame)
   }, [caseStudies, scrollToIndex])
+
+  useEffect(() => {
+    let cancelInitialHashSync = syncToHash()
+
+    const handleHashChange = () => {
+      cancelInitialHashSync?.()
+      cancelInitialHashSync = syncToHash()
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+
+    return () => {
+      cancelInitialHashSync?.()
+      window.removeEventListener('hashchange', handleHashChange)
+    }
+  }, [syncToHash])
 
   const updateActiveIndex = useCallback(() => {
     const track = trackRef.current

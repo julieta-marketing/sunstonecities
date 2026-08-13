@@ -82,13 +82,15 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
   if (!article) notFound()
 
   const relatedArticles = newsArticles.filter((item) => item.slug !== article.slug).slice(0, 3)
+  const newsBriefs = article.newsBriefs ?? []
+  const hasNewsBriefs = newsBriefs.length > 0
 
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         <article className="relative overflow-hidden">
-          <section className="relative overflow-hidden bg-surface pt-32 pb-14 sm:pt-36 lg:pt-40">
+          <section className="relative overflow-hidden bg-surface pt-32 pb-0 sm:pt-36 lg:pt-40">
             <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
@@ -122,7 +124,7 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
             </div>
 
             <div className="relative z-10 mx-auto mt-12 max-w-6xl px-5 sm:px-8">
-              <figure className="overflow-hidden rounded-lg border border-border bg-card shadow-[0_32px_90px_-58px_rgba(15,58,99,0.55)]">
+              <figure className="overflow-hidden rounded-lg border border-border bg-card shadow-[0_16px_36px_-30px_rgba(15,58,99,0.28)]">
                 <div className="relative aspect-[16/9] min-h-[18rem] sm:min-h-[24rem] lg:aspect-[21/9]">
                   <Image
                     src={article.image}
@@ -142,9 +144,15 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
             </div>
           </section>
 
-          <section className="px-5 py-14 sm:px-8 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(17rem,0.28fr)] lg:items-start">
-              <div className={cn(articleCardClass, 'order-2 lg:order-1')}>
+          <section className="pt-10 pb-14 sm:pt-12 sm:pb-18">
+            <div
+              className={cn(
+                'mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:items-start',
+                hasNewsBriefs &&
+                  'lg:grid-cols-[minmax(0,0.72fr)_minmax(17rem,0.28fr)]',
+              )}
+            >
+              <div className={cn(articleCardClass, hasNewsBriefs && 'order-2 lg:order-1')}>
                 {article.contentImage && (
                   <figure className="mb-10 overflow-hidden rounded-lg border border-border bg-muted">
                     <div className="relative aspect-[16/9]">
@@ -190,12 +198,11 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
                 </div>
               </div>
 
-              <aside className="order-1 space-y-5 lg:order-2 lg:sticky lg:top-28">
-                {article.newsBriefs && (
-                  <InfoPanel title="News Briefs" items={article.newsBriefs} />
-                )}
-
-              </aside>
+              {hasNewsBriefs && (
+                <aside className="order-1 space-y-5 lg:order-2 lg:sticky lg:top-28">
+                  <InfoPanel title="News Briefs" items={newsBriefs} />
+                </aside>
+              )}
             </div>
           </section>
 

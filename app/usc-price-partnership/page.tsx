@@ -17,6 +17,7 @@ import {
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/primitives'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
+import { getProgramHistoryYears } from '@/lib/usc-program-history'
 
 export const metadata: Metadata = {
   title: 'USC Price Partnership | Sunstone Cities',
@@ -81,153 +82,6 @@ const involvement: Array<{
   },
 ]
 
-type ProgramClient = { name: string; logo?: string; link?: string }
-
-const programYears: {
-  years: string
-  description: string
-  clients: ProgramClient[]
-}[] = [
-  {
-    years: '2025–26',
-    description:
-      'The Challenge welcomed its first county client and featured its first all-women panel of judges, highlighting diverse leadership in public service.',
-    clients: [
-      {
-        name: 'San Bernardino County',
-        logo: '/usc-challenge/county-of-san-bernardino.webp',
-        link: 'https://selectsbcounty.com/',
-      },
-      {
-        name: 'City of West Covina',
-        logo: '/usc-challenge/city-of-west-covina.png',
-        link: 'https://www.westcovina.gov/204/Economic-Development',
-      },
-      {
-        name: 'City of Sutter Creek',
-        logo: '/usc-challenge/city-of-sutter-creek.png',
-        link: 'https://www.cityofsuttercreek.org/',
-      },
-      {
-        name: 'City of Lake Elsinore',
-        logo: '/usc-challenge/city-of-lake-elsinore.webp',
-        link: 'https://lakeelsinorebusiness.com/',
-      },
-      {
-        name: 'City of Mission Viejo',
-        logo: '/usc-challenge/city-of-mission-viejo.svg',
-        link: 'https://www.missionviejo.gov/departments/economic-development',
-      },
-      {
-        name: 'City of Riverside',
-        logo: '/usc-challenge/city-of-riverside.png',
-        link: 'https://riversideca.gov/cedd/economic-development',
-      },
-    ],
-  },
-  {
-    years: '2024–25',
-    description:
-      'Participation reached Northern California and rural communities, broadening the program’s geographic and economic development perspective.',
-    clients: [
-      {
-        name: 'City of Carson',
-        logo: '/usc-challenge/city-of-carson.jpg',
-        link: 'https://carsonca.gov/services/community___economic_development/economic_development',
-      },
-      {
-        name: 'City of Glendora',
-        logo: '/usc-challenge/city-of-glendora.png',
-        link: 'https://www.cityofglendora.gov/Explore/Economic-Development',
-      },
-      {
-        name: 'Nevada City',
-        logo: '/usc-challenge/nevada-city-seal.png',
-        link: 'https://www.nevadacityca.gov/',
-      },
-      {
-        name: 'City of Cypress',
-        logo: '/usc-challenge/city-of-cypress.png',
-        link: 'https://www.cypressca.org/departments/community-development/economic-development-911',
-      },
-      {
-        name: 'City of Santa Clarita',
-        logo: '/usc-challenge/city-of-santa-clarita.png',
-        link: 'https://econdev.santaclarita.gov/',
-      },
-    ],
-  },
-  {
-    years: '2023–24',
-    description:
-      'The Challenge expanded to five cities, extending its impact across community and economic development priorities.',
-    clients: [
-      {
-        name: 'City of San Bernardino',
-        logo: '/usc-challenge/city-of-san-bernardino-clean.png',
-        link: 'https://www.sanbernardino.gov/206/Economic-Development',
-      },
-      {
-        name: 'City of Pasadena',
-        logo: '/usc-challenge/city-of-pasadena.jpg',
-        link: 'https://www.cityofpasadena.net/economicdevelopment/',
-      },
-      {
-        name: 'City of Torrance',
-        logo: '/usc-challenge/city-of-torrance.png',
-        link: 'https://business.torranceca.gov/our-city/economic-development/economic-development-team',
-      },
-      {
-        name: 'City of Culver City',
-        logo: '/usc-challenge/city-of-culver-city.png',
-        link: 'https://www.culvercity.gov/City-Hall/City-Departments/Economic-and-Cultural-Development/Economic-Development',
-      },
-      {
-        name: 'City of Lomita',
-        logo: '/usc-challenge/city-of-lomita.png',
-        link: 'https://lomitacity.com/community-economic-development/',
-      },
-    ],
-  },
-  {
-    years: '2022–23',
-    description:
-      'Four founding client cities began a partnership designed to turn student research into practical economic development strategies.',
-    clients: [
-      {
-        name: 'City of Garden Grove',
-        logo: '/usc-challenge/city-of-garden-grove.png',
-        link: 'https://ggcity.org/econdev',
-      },
-      {
-        name: 'City of Irvine',
-        logo: '/usc-challenge/city-of-irvine.svg',
-        link: 'https://cityofirvine.gov/economic-development',
-      },
-      {
-        name: 'City of Long Beach',
-        logo: '/usc-challenge/city-of-long-beach.jpg',
-        link: 'https://www.longbeach.gov/edo/',
-      },
-      {
-        name: 'City of El Segundo',
-        logo: '/usc-challenge/city-of-el-segundo.png',
-        link: 'https://www.elsegundobusiness.com/',
-      },
-    ],
-  },
-]
-
-/* Short initials fallback for clients without a logo on file yet. */
-function getClientInitials(name: string) {
-  const stripped = name.replace(/^(City|County) of\s+/i, '').trim()
-  const words = stripped.split(/\s+/).filter(Boolean)
-  if (words.length >= 2) {
-    return (words[0][0] + words[1][0]).toUpperCase()
-  }
-  return stripped.slice(0, 2).toUpperCase()
-}
-
 const relatedPrograms = [
   {
     title: 'USC Sol Price School of Public Policy',
@@ -283,6 +137,8 @@ const eventAlbumPhotos: EventAlbumPhoto[] = [
 ]
 
 export default function UscPricePartnershipPage() {
+  const programYears = getProgramHistoryYears()
+
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen overflow-hidden bg-background text-foreground">
       <SiteHeader darkTop />
@@ -482,48 +338,32 @@ export default function UscPricePartnershipPage() {
                       {year.clients.map((client) => {
                         const logoTile = (
                           <div className="flex h-32 items-center justify-center rounded-2xl border border-border bg-white p-4 shadow-[0_20px_42px_-30px_rgba(15,58,99,0.35)] transition-transform duration-500 group-hover:-translate-y-1 sm:h-36">
-                            {client.logo ? (
-                              <div className="relative h-16 w-32 sm:h-20 sm:w-40">
-                                <Image
-                                  src={client.logo}
-                                  alt={`${client.name} logo`}
-                                  fill
-                                  sizes="(max-width: 640px) 40vw, (max-width: 1024px) 20vw, 160px"
-                                  className="object-contain"
-                                />
-                              </div>
-                            ) : (
-                              // Placeholder for clients without a logo on file yet — see TODO comments in the programYears data above.
-                              <div className="flex size-14 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-400">
-                                {getClientInitials(client.name)}
-                              </div>
-                            )}
+                            <div className="relative h-16 w-32 sm:h-20 sm:w-40">
+                              <Image
+                                src={client.logo}
+                                alt={`${client.name} logo`}
+                                fill
+                                sizes="(max-width: 640px) 40vw, (max-width: 1024px) 20vw, 160px"
+                                className="object-contain"
+                              />
+                            </div>
                           </div>
                         )
 
                         return (
                           <StaggerItem key={client.name}>
-                            {client.link ? (
-                              <a
-                                href={client.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Visit ${client.name}'s economic development website`}
-                                className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                              >
-                                {logoTile}
-                                <p className="mt-3 text-center text-xs font-medium leading-5 text-muted-foreground transition-colors group-hover:text-primary">
-                                  {client.name}
-                                </p>
-                              </a>
-                            ) : (
-                              <div className="group">
-                                {logoTile}
-                                <p className="mt-3 text-center text-xs font-medium leading-5 text-muted-foreground">
-                                  {client.name}
-                                </p>
-                              </div>
-                            )}
+                            <a
+                              href={client.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Visit ${client.name}'s economic development website`}
+                              className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                            >
+                              {logoTile}
+                              <p className="mt-3 text-center text-xs font-medium leading-5 text-muted-foreground transition-colors group-hover:text-primary">
+                                {client.name}
+                              </p>
+                            </a>
                           </StaggerItem>
                         )
                       })}

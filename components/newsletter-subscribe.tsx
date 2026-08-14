@@ -68,7 +68,7 @@ export function NewsletterSubscribe() {
           <FadeIn delay={0.12}>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-3 rounded-[2rem] border border-border bg-white/90 p-3 shadow-[0_18px_55px_-38px_rgba(15,58,99,0.55)] backdrop-blur-sm sm:flex-row sm:items-center sm:rounded-full sm:p-2"
+              className="flex flex-col gap-3 rounded-[2rem] border border-transparent bg-transparent p-0 sm:flex-row sm:items-center sm:rounded-full sm:border-border sm:bg-white/90 sm:p-2 sm:shadow-[0_18px_55px_-38px_rgba(15,58,99,0.55)] sm:backdrop-blur-sm"
             >
               <label htmlFor="newsletter-email" className="sr-only">
                 Email address

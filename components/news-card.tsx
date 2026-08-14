@@ -7,6 +7,12 @@ import { ArrowUpRight } from 'lucide-react'
 import type { NewsItem } from '@/lib/site-data'
 import { cn } from '@/lib/utils'
 
+function stripExcerptMarkup(text: string) {
+  return text
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '$1')
+    .replace(/\*\*/g, '')
+}
+
 export function NewsCard({
   item,
   variant = 'vertical',
@@ -94,7 +100,7 @@ export function NewsCard({
         </h3>
         {!isHorizontal && (
           <p className="text-sm leading-relaxed text-muted-foreground">
-            {item.excerpt}
+            {stripExcerptMarkup(item.excerpt)}
           </p>
         )}
         <span

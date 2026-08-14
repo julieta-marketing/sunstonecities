@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
-import { NewsCard } from '@/components/news-card'
+import { NewsArchiveSearch } from '@/components/news-archive-search'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { newsIndex } from '@/lib/news-index'
@@ -45,25 +45,7 @@ export default function NewsPage() {
 
         <section className="relative bg-background px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-                  All articles
-                </p>
-                <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                  Browse the full archive
-                </h2>
-              </div>
-              <p className="text-sm font-medium text-muted-foreground">
-                {newsIndex.length} articles
-              </p>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {newsIndex.map((article) => (
-                <NewsCard key={article.slug} item={article} />
-              ))}
-            </div>
+            <NewsArchiveSearch items={newsIndex} />
           </div>
         </section>
       </main>

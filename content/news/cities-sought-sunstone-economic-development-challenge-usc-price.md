@@ -1,7 +1,7 @@
 ---
 slug: "cities-sought-sunstone-economic-development-challenge-usc-price"
 title: "Cities sought for next Sunstone Economic Development Challenge @ USC Price"
-subtitle: "Cities can apply for free economic development assistance through the fifth annual Sunstone Economic Development Challenge @ USC Price."
+subtitle: "Cities can apply for free economic development assistance through the fifth annual Sunstone Economic Development Challenge @ USC Price. Article originally published on [**PublicCEO**](https://www.publicceo.com/2026/08/cities-sought-for-next-sunstone-economic-development-challenge-usc-price/)."
 date: "August 3, 2026"
 category: "Firm News"
 titleImage: "/news/cities-sought-sunstone-economic-development-challenge-usc-price.png"

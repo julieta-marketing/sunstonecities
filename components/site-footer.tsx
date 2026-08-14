@@ -92,8 +92,20 @@ export function SiteFooter({ showFaq = true }: { showFaq?: boolean }) {
             © {new Date().getFullYear()} Sunstone Cities. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span>Privacy</span>
-            <span>Terms</span>
+            <a
+              href="/documents/sunstone-cities-privacy-policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-foreground"
+            >
+              Privacy
+            </a>
+            <a
+              href="/terms"
+              className="transition-colors hover:text-foreground"
+            >
+              Terms
+            </a>
           </div>
         </div>
       </div>

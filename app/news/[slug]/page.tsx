@@ -39,7 +39,7 @@ function renderInlineLinks(text: string) {
         rel="noopener noreferrer"
         className={inlineLinkClass}
       >
-        {label}
+        {renderInlineLabel(label)}
       </a>,
     )
 
@@ -51,6 +51,20 @@ function renderInlineLinks(text: string) {
   }
 
   return parts.length ? parts : text
+}
+
+function renderInlineLabel(label: string) {
+  const boldMatch = label.match(/^\*\*(.+)\*\*$/)
+
+  if (boldMatch) {
+    return <strong>{boldMatch[1]}</strong>
+  }
+
+  return label
+}
+
+function stripInlineMarkdown(text: string) {
+  return text.replace(markdownLinkPattern, '$1').replace(/\*\*/g, '')
 }
 
 export function generateStaticParams() {
@@ -71,7 +85,7 @@ export async function generateMetadata({
 
   return {
     title: `${article.title} | Sunstone Cities`,
-    description: article.deck,
+    description: stripInlineMarkdown(article.deck),
   }
 }
 
@@ -118,7 +132,7 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
                   {article.title}
                 </h1>
                 <p className="mt-6 max-w-4xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl">
-                  {article.deck}
+                  {renderInlineLinks(article.deck)}
                 </p>
               </div>
             </div>
@@ -240,7 +254,7 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
                       {item.title}
                     </h3>
                     <p className="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">
-                      {item.deck}
+                      {stripInlineMarkdown(item.deck)}
                     </p>
                   </Link>
                 ))}

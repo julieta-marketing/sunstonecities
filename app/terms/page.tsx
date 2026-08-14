@@ -147,7 +147,7 @@ export default function TermsPage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
-        <section className="relative overflow-hidden bg-surface pt-32 pb-16 sm:pt-36 lg:pt-40">
+        <section className="relative overflow-hidden bg-surface pt-32 pb-8 sm:pt-36 sm:pb-10 lg:pt-40">
           <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
           <div className="pointer-events-none absolute right-0 top-0 size-[28rem] rounded-full bg-primary/10 blur-3xl" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
@@ -163,7 +163,7 @@ export default function TermsPage() {
 
             <div className="mt-12">
               <SectionLabel>Legal</SectionLabel>
-              <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
+              <h1 className="mt-5 font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-6xl">
                 Terms of Use
               </h1>
               <p className="mt-6 max-w-none text-lg leading-relaxed text-muted-foreground md:whitespace-nowrap">
@@ -173,7 +173,7 @@ export default function TermsPage() {
           </div>
         </section>
 
-        <section className="px-5 py-14 sm:px-8 sm:py-16">
+        <section className="px-5 pt-8 pb-14 sm:px-8 sm:pt-8 sm:pb-16">
           <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[17rem_minmax(0,1fr)] lg:items-start">
             <aside className="lg:sticky lg:top-28">
               <div className="rounded-lg border border-border bg-card p-5 shadow-[0_24px_70px_-56px_rgba(15,58,99,0.45)]">

@@ -68,12 +68,12 @@ export function NewsletterSubscribe() {
           <FadeIn delay={0.12}>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-3 rounded-full border border-border bg-white/90 p-2 shadow-[0_18px_55px_-38px_rgba(15,58,99,0.55)] backdrop-blur-sm sm:flex-row sm:items-center"
+              className="flex flex-col gap-3 rounded-[2rem] border border-border bg-white/90 p-3 shadow-[0_18px_55px_-38px_rgba(15,58,99,0.55)] backdrop-blur-sm sm:flex-row sm:items-center sm:rounded-full sm:p-2"
             >
               <label htmlFor="newsletter-email" className="sr-only">
                 Email address
               </label>
-              <div className="flex min-w-0 flex-1 items-center gap-3 px-5 py-3">
+              <div className="flex min-h-14 min-w-0 flex-1 items-center gap-3 rounded-full bg-white px-5 py-3 ring-1 ring-border/70 sm:min-h-0 sm:bg-transparent sm:ring-0">
                 <Mail className="size-5 shrink-0 text-muted-foreground" />
                 <input
                   id="newsletter-email"
@@ -87,7 +87,7 @@ export function NewsletterSubscribe() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="shine group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-[0_12px_28px_-10px_rgba(78,114,217,0.65)] ring-1 ring-primary-dark/20 transition-all hover:-translate-y-0.5 hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:px-8"
+                className="shine group inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-bold text-primary-foreground shadow-[0_12px_28px_-10px_rgba(78,114,217,0.65)] ring-1 ring-primary-dark/20 transition-all hover:-translate-y-0.5 hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:min-h-0 sm:w-auto sm:px-8"
               >
                 {status === 'loading'
                   ? 'Submitting'

@@ -183,7 +183,7 @@ export function LatestNews({ items }: { items: NewsItem[] }) {
             {items.map((item) => (
               <StaggerItem
                 key={item.id}
-                className="w-[calc(100vw-2.5rem)] max-w-[600px] shrink-0 snap-start md:w-[calc((100vw-5.25rem)/2)] xl:w-[calc((100vw-6.5rem)/3)]"
+                className="w-[calc(100vw-2.5rem)] max-w-[680px] shrink-0 snap-start md:w-[calc((100vw-5.25rem)/2)] xl:w-[38vw]"
               >
                 <div data-news-slide>
                   <NewsCard item={item} variant="horizontal" />

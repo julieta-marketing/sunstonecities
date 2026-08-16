@@ -81,7 +81,7 @@ export function NewsCard({
         )}
       >
         {isHorizontal ? (
-          <span className="text-[0.65rem] font-medium uppercase tracking-[0.12em] text-muted-foreground sm:text-[0.7rem]">
+          <span className="shrink-0 text-[0.65rem] font-medium uppercase tracking-[0.12em] text-muted-foreground sm:text-[0.7rem]">
             {item.date}
           </span>
         ) : (
@@ -92,8 +92,10 @@ export function NewsCard({
         )}
         <h3
           className={cn(
-            'text-pretty font-display font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary',
-            isHorizontal ? 'text-base sm:text-xl' : 'text-xl',
+            'min-h-0 overflow-hidden text-pretty font-display font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary [display:-webkit-box] [-webkit-box-orient:vertical]',
+            isHorizontal
+              ? 'text-base [-webkit-line-clamp:4] sm:text-xl'
+              : 'text-xl [-webkit-line-clamp:4]',
           )}
         >
           {item.title}
@@ -105,7 +107,7 @@ export function NewsCard({
         )}
         <span
           className={cn(
-            'mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-foreground',
+            'mt-auto inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-foreground',
             !isHorizontal && 'pt-3',
           )}
         >

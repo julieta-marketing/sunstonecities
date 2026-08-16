@@ -82,7 +82,7 @@ export function SiteHeader({ darkTop = false }: { darkTop?: boolean }) {
           )}
         >
           <a href="/#top" className="shrink-0" aria-label="Sunstone Cities home">
-            <Logo />
+            <Logo variant={!scrolled && darkTop ? 'dark' : 'default'} />
           </a>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">

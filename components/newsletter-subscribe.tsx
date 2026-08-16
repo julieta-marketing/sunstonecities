@@ -49,7 +49,7 @@ export function NewsletterSubscribe() {
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(70,127,247,0.07),transparent_36%,rgba(121,179,222,0.08))]" />
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid gap-8 border-t border-border/70 pt-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+        <div className="grid gap-8 pt-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div>
             <SectionLabel>Newsletter</SectionLabel>
             <FadeIn>

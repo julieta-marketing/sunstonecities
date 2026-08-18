@@ -10,6 +10,7 @@ import {
 import { Reveal } from '@/components/motion/primitives'
 import { SectionHeading } from '@/components/section-heading'
 import { getUpcomingLumaEvent } from '@/lib/luma'
+import { sunstoneMoments } from '@/lib/sunstone-moments'
 import { getLatestYoutubeVideo } from '@/lib/youtube'
 
 const primaryCtaClass =
@@ -24,6 +25,10 @@ export async function UpcomingEvents() {
     getUpcomingLumaEvent(),
     getLatestYoutubeVideo(),
   ])
+
+  // When there's no upcoming event, spotlight a past Sunstone Moments photo
+  // in the image slot instead of an empty placeholder.
+  const spotlightMoment = sunstoneMoments[0]
 
   return (
     <section
@@ -96,21 +101,46 @@ export async function UpcomingEvents() {
                 </>
               ) : (
                 <>
-                  <div
-                    role="img"
-                    aria-label="More events are coming soon"
-                    className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-muted"
-                  >
-                    <div
-                      aria-hidden="true"
-                      className="bg-dots absolute inset-0 opacity-60"
-                    />
-                    <div className="relative flex flex-col items-center gap-4 px-6 text-center">
-                      <span className="flex size-20 items-center justify-center rounded-full border border-primary/20 bg-white/90 text-primary shadow-[0_10px_24px_-12px_rgba(15,58,99,0.45)]">
-                        <CalendarClock className="size-9" />
+                  {spotlightMoment ? (
+                    <a
+                      href="#events-full"
+                      className="group relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
+                      aria-label="View past Sunstone Cities events"
+                    >
+                      <Image
+                        src={spotlightMoment.image}
+                        alt={spotlightMoment.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                      />
+                      <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10182b]/72 via-transparent to-transparent" />
+                      <span className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full border border-white/80 bg-white/90 text-primary shadow-[0_10px_24px_-12px_rgba(15,58,99,0.45)]">
+                        <CalendarClock className="size-5" />
                       </span>
+                      <span className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                        <span className="inline-flex max-w-full rounded-full border border-white/20 bg-[#10182b]/82 px-3.5 py-1.5 text-xs font-medium leading-snug text-white shadow-lg backdrop-blur-md sm:text-sm">
+                          {spotlightMoment.tag}
+                        </span>
+                      </span>
+                    </a>
+                  ) : (
+                    <div
+                      role="img"
+                      aria-label="More events are coming soon"
+                      className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-muted"
+                    >
+                      <div
+                        aria-hidden="true"
+                        className="bg-dots absolute inset-0 opacity-60"
+                      />
+                      <div className="relative flex flex-col items-center gap-4 px-6 text-center">
+                        <span className="flex size-20 items-center justify-center rounded-full border border-primary/20 bg-white/90 text-primary shadow-[0_10px_24px_-12px_rgba(15,58,99,0.45)]">
+                          <CalendarClock className="size-9" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="p-7 sm:p-9">
                     <div className="flex flex-wrap items-center justify-between gap-3">

@@ -17,6 +17,8 @@ export interface EventItem {
   location: string
   excerpt: string
   image: string
+  /** Direct link to the event's registration page (falls back to the calendar URL when absent). */
+  registerUrl?: string
 }
 
 export interface TeamMember {
@@ -218,20 +220,11 @@ export const newsArchive: NewsItem[] = [
   },
 ]
 
-export const events: EventItem[] = [
-  {
-    id: 'e1',
-    title:
-      '2026-27 Sunstone Economic Development Challenge @ USC Price - Client City Info Session',
-    date: 'Friday, August 14, 2026',
-    time: '12:00 PM – 12:30 PM PT',
-    timeZone: 'PT',
-    location: 'Zoom',
-    excerpt:
-      'A virtual information session for cities interested in participating in the fifth annual Sunstone Economic Development Challenge at USC Price.',
-    image: '/event-usc-economic-development-challenge.jpg',
-  },
-]
+// Note: there is no static `events` array here on purpose. The homepage
+// events section (components/upcoming-events.tsx) fetches the live
+// upcoming event straight from Luma (see lib/luma.ts) and renders an
+// empty state — not a hardcoded event — when Luma has nothing to show or
+// the fetch fails, so a stale event can never get stuck on the site.
 
 export const team: TeamMember[] = [
   {

@@ -34,3 +34,7 @@ When training people in AI use, Lloyd said he makes it clear that the person is 
 Lloyd's Customized Training Institute for Artificial Intelligence works with the [California Employment Training Panel (ETP)](https://etp.ca.gov), which provides funding to employers to train workers for good paying, long-term jobs. (Elsa Wadzinski, ETP Senior Economic Development Specialist, was the featured speaker at the June Sunstone Cities P3 Strategy Series.)
 
 For more information about the Training Institute, email lloyd_roger@rsccd.edu. For information about the next P3 Strategy Series event, go to [www.sunstonecities.com](https://www.sunstonecities.com).
+
+> About Sunstone Cities
+
+Sunstone Cities is an economic development consulting firm that helps local government leaders unlock economic development, new business formation, and job growth. We partner with municipalities to identify and capitalize on opportunities for revenue growth, investment and infrastructure financing through P3 partnerships. Our team of experienced local government professionals leverage data-driven insights, industry expertise, and public-private partnerships to help cities revitalize their economies, attract new businesses, and better monetize their community assets.

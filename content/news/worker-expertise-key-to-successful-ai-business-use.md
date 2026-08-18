@@ -31,6 +31,6 @@ When training people in AI use, Lloyd said he makes it clear that the person is 
 
 ## Training Support
 
-Lloyd's Customized Training Institute for Artificial Intelligence works with the California Employment Training Panel (ETP), which provides funding to employers to train workers for good paying, long-term jobs. (Elsa Wadzinski, ETP Senior Economic Development Specialist, was the featured speaker at the June Sunstone Cities P3 Strategy Series.)
+Lloyd's Customized Training Institute for Artificial Intelligence works with the [California Employment Training Panel (ETP)](https://etp.ca.gov), which provides funding to employers to train workers for good paying, long-term jobs. (Elsa Wadzinski, ETP Senior Economic Development Specialist, was the featured speaker at the June Sunstone Cities P3 Strategy Series.)
 
 For more information about the Training Institute, email [lloyd_roger@rsccd.edu](mailto:lloyd_roger@rsccd.edu). For information about the next P3 Strategy Series event, go to [www.sunstonecities.com](https://www.sunstonecities.com).

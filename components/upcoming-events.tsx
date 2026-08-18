@@ -172,7 +172,7 @@ export async function UpcomingEvents() {
                   </p>
                 </div>
 
-                <h2 className="mt-5 max-w-xl text-balance font-display text-3xl font-semibold leading-[1.12] tracking-tight text-foreground sm:text-4xl">
+                <h2 className="mt-5 max-w-xl text-balance font-display text-2xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-3xl">
                   {video.title}
                 </h2>
                 <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground">

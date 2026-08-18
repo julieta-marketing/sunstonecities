@@ -71,7 +71,72 @@ function formatEventLocation(event: LumaEvent) {
   )
 }
 
-function toEventItem(event: LumaEvent): EventItem {
+function readImageSize(bytes: Uint8Array): { width: number; height: number } | null {
+  // PNG: 8-byte signature, then the IHDR chunk (length + "IHDR" + width + height).
+  if (
+    bytes.length > 24 &&
+    bytes[0] === 0x89 &&
+    bytes[1] === 0x50 &&
+    bytes[2] === 0x4e &&
+    bytes[3] === 0x47
+  ) {
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
+    return { width: view.getUint32(16), height: view.getUint32(20) }
+  }
+
+  // JPEG: scan markers for a start-of-frame segment (SOF0–SOF3), which
+  // carries the pixel dimensions.
+  if (bytes.length > 4 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let offset = 2
+    while (offset + 9 < bytes.length) {
+      if (bytes[offset] !== 0xff) {
+        offset += 1
+        continue
+      }
+      const marker = bytes[offset + 1]
+      if (marker >= 0xc0 && marker <= 0xc3) {
+        return {
+          height: (bytes[offset + 5] << 8) | bytes[offset + 6],
+          width: (bytes[offset + 7] << 8) | bytes[offset + 8],
+        }
+      }
+      const segmentLength = (bytes[offset + 2] << 8) | bytes[offset + 3]
+      offset += 2 + segmentLength
+    }
+  }
+
+  return null
+}
+
+/**
+ * Determines whether an event's cover image should be shown in full
+ * ('contain', for tall poster-style graphics that carry text worth
+ * reading in full) or cropped to fill the frame ('cover', for ordinary
+ * landscape photos). Only reads the first few KB of the image (enough
+ * to cover the PNG/JPEG header) rather than downloading the whole file.
+ */
+async function detectImageFit(url: string): Promise<'cover' | 'contain'> {
+  try {
+    const response = await fetch(url, {
+      headers: { Range: 'bytes=0-65535' },
+      next: { revalidate: REVALIDATE_SECONDS },
+    })
+
+    if (!response.ok) return 'cover'
+
+    const bytes = new Uint8Array(await response.arrayBuffer())
+    const size = readImageSize(bytes)
+
+    return size && size.height > size.width ? 'contain' : 'cover'
+  } catch (error) {
+    console.error('Failed to detect event image dimensions', error)
+    return 'cover'
+  }
+}
+
+async function toEventItem(event: LumaEvent): Promise<EventItem> {
+  const image = event.cover_url || '/event-usc-economic-development-challenge.jpg'
+
   return {
     id: event.api_id,
     title: event.name,
@@ -80,7 +145,8 @@ function toEventItem(event: LumaEvent): EventItem {
     location: formatEventLocation(event),
     excerpt:
       'Join Sunstone Cities for this upcoming event — register on Luma for the full details.',
-    image: event.cover_url || '/event-usc-economic-development-challenge.jpg',
+    image,
+    imageFit: event.cover_url ? await detectImageFit(image) : 'cover',
     registerUrl: `https://lu.ma/${event.url}`,
   }
 }
@@ -91,7 +157,7 @@ function toEventItem(event: LumaEvent): EventItem {
  * https://luma.com/sunstonecities, without needing a manual content update.
  *
  * Returns null (rather than throwing) on any failure so callers can fall
- * back to the static entry in lib/site-data.ts.
+ * back to an empty state.
  */
 export async function getUpcomingLumaEvent(): Promise<EventItem | null> {
   try {
@@ -108,7 +174,7 @@ export async function getUpcomingLumaEvent(): Promise<EventItem | null> {
     const data = (await response.json()) as LumaCalendarItemsResponse
     const nextEvent = data.entries?.[0]?.event
 
-    return nextEvent ? toEventItem(nextEvent) : null
+    return nextEvent ? await toEventItem(nextEvent) : null
   } catch (error) {
     console.error('Failed to fetch upcoming Luma event', error)
     return null

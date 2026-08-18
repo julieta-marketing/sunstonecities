@@ -44,14 +44,16 @@ export async function UpcomingEvents() {
             <article className="overflow-hidden rounded-lg border border-[#cdd9e8] bg-white/85 shadow-[0_22px_55px_-42px_rgba(15,58,99,0.55)] backdrop-blur-sm transition-colors duration-500 hover:bg-white">
               {event ? (
                 <>
-                  <div className="group relative aspect-[16/10] overflow-hidden bg-black/20">
+                  <div
+                    className={`group relative aspect-[16/10] overflow-hidden ${event.imageFit === 'contain' ? 'bg-muted' : 'bg-black/20'}`}
+                  >
                     <Image
                       src={event.image}
                       alt={event.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       quality={100}
-                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                      className={`${event.imageFit === 'contain' ? 'object-contain' : 'object-cover'} object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]`}
                     />
                   </div>
 

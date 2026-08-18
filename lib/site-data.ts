@@ -19,6 +19,13 @@ export interface EventItem {
   image: string
   /** Direct link to the event's registration page (falls back to the calendar URL when absent). */
   registerUrl?: string
+  /**
+   * How `image` should be fit into its frame: 'contain' shows the full
+   * image letterboxed (for tall poster graphics with text worth reading
+   * in full), 'cover' crops to fill the frame (for ordinary landscape
+   * photos). Defaults to 'cover' when absent.
+   */
+  imageFit?: 'cover' | 'contain'
 }
 
 export interface TeamMember {

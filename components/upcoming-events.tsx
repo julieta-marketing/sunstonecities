@@ -106,12 +106,9 @@ export async function UpcomingEvents() {
                       className="bg-dots absolute inset-0 opacity-60"
                     />
                     <div className="relative flex flex-col items-center gap-4 px-6 text-center">
-                      <span className="flex size-14 items-center justify-center rounded-full border border-primary/20 bg-white/90 text-primary shadow-[0_10px_24px_-12px_rgba(15,58,99,0.45)]">
-                        <CalendarClock className="size-6" />
+                      <span className="flex size-20 items-center justify-center rounded-full border border-primary/20 bg-white/90 text-primary shadow-[0_10px_24px_-12px_rgba(15,58,99,0.45)]">
+                        <CalendarClock className="size-9" />
                       </span>
-                      <p className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                        More Events Are Coming
-                      </p>
                     </div>
                   </div>
 

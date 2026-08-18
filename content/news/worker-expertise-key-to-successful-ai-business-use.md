@@ -2,7 +2,7 @@
 slug: "worker-expertise-key-to-successful-ai-business-use"
 title: "Worker Expertise Key To Successful AI Business Use"
 subtitle: "At the latest Sunstone Cities P3 Strategy Series, AI training expert Roger Lloyd explained why domain knowledge — not AI mechanics — is what makes employees truly 'AI literate.'"
-date: "December 15, 2025"
+date: "August 18, 2026"
 category: "The P3 Builder"
 titleImage: "/news/worker-expertise-key-to-successful-ai-business-use.png"
 contentImage: ""

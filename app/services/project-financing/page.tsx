@@ -445,7 +445,7 @@ export default function ProjectFinancingPage() {
                     Start a Conversation
                   </p>
                   <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-                    Get Your Economic Opportunity Brief
+                    Ready to move your project forward?
                   </h2>
                   <p className="mt-4 leading-relaxed text-white/75">
                     Tell us about your project, timing, and capital needs.
@@ -454,7 +454,7 @@ export default function ProjectFinancingPage() {
                   </p>
                 </div>
                 <Link
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSdp3h_4_JgdoAp5BXDTZeV-Xs_iIS0xSOePLsCvNQk7oxU67w/viewform"
+                  href="/#contact"
                   className="group inline-flex w-fit shrink-0 items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0F3A63] transition-transform hover:-translate-y-0.5"
                 >
                   Contact Us

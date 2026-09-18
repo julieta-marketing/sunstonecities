@@ -312,7 +312,7 @@ export default function ProjectConsultingPage() {
                     Start a Conversation
                   </p>
                   <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-                    Ready to strengthen your team&apos;s capacity?
+                    Get Your Economic Opportunity Brief
                   </h2>
                   <p className="mt-4 leading-relaxed text-white/75">
                     Tell us what your project needs. We&apos;ll help identify the
@@ -320,7 +320,7 @@ export default function ProjectConsultingPage() {
                   </p>
                 </div>
                 <Link
-                  href="/#contact"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdp3h_4_JgdoAp5BXDTZeV-Xs_iIS0xSOePLsCvNQk7oxU67w/viewform"
                   className="group inline-flex w-fit shrink-0 items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0F3A63] transition-transform hover:-translate-y-0.5"
                 >
                   Contact Us
